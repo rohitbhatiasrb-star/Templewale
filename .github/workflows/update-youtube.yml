@@ -1,0 +1,83 @@
+name: Update YouTube Content
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch YouTube videos
+        env:
+          API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json, urllib.parse, urllib.request
+
+          key = __import__("os").environ["API_KEY"]
+
+          def get(url, params):
+              q = urllib.parse.urlencode(params)
+              with urllib.request.urlopen(url + "?" + q) as r:
+                  return json.load(r)
+
+          channel = get(
+              "https://www.googleapis.com/youtube/v3/channels",
+              {
+                  "part": "contentDetails",
+                  "forHandle": "@templewale",
+                  "key": key
+              }
+          )
+
+          uploads = channel["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+
+          data = get(
+              "https://www.googleapis.com/youtube/v3/playlistItems",
+              {
+                  "part": "snippet,contentDetails",
+                  "playlistId": uploads,
+                  "maxResults": 50,
+                  "key": key
+              }
+          )
+
+          videos = []
+
+          for item in data.get("items", []):
+              s = item["snippet"]
+              vid = item["contentDetails"]["videoId"]
+              title = s["title"]
+
+              videos.append({
+                  "id": vid,
+                  "title": title,
+                  "description": s.get("description", ""),
+                  "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+                  "url": f"https://www.youtube.com/watch?v={vid}",
+                  "publishedAt": s["publishedAt"],
+                  "isShort": "#shorts" in title.lower() or "/shorts/" in s.get("description","").lower()
+              })
+
+          with open("youtube-data.json", "w", encoding="utf-8") as f:
+              json.dump(videos, f, ensure_ascii=False, indent=2)
+
+          print("Updated", len(videos), "YouTube videos")
+          PY
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add youtube-data.json
+          git diff --cached --quiet || git commit -m "Auto update YouTube content"
+          git push
