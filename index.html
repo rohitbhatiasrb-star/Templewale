@@ -1809,6 +1809,746 @@ async function load(){
   load();
 
 
+</scr<script>
+
+(function () {
+
+  /* ==========================================
+     HELPERS
+  ========================================== */
+
+  function getValue(item, keys) {
+
+    if (!item) return "";
+
+    for (const key of keys) {
+
+      if (
+        item[key] !== undefined &&
+        item[key] !== null &&
+        item[key] !== ""
+      ) {
+        return item[key];
+      }
+
+    }
+
+    return "";
+
+  }
+
+
+  /* ==========================================
+     YOUTUBE VIDEO ID
+  ========================================== */
+
+  function youtubeId(item) {
+
+    let id = getValue(item, [
+      "id",
+      "videoId",
+      "video_id"
+    ]);
+
+    if (typeof id === "object" && id) {
+
+      id =
+        id.videoId ||
+        id.video_id ||
+        id.id ||
+        "";
+
+    }
+
+    if (id) {
+      return String(id);
+    }
+
+
+    const url = getValue(item, [
+      "url",
+      "videoUrl",
+      "link",
+      "youtubeUrl"
+    ]);
+
+
+    if (url) {
+
+      const match = String(url).match(
+        /(?:v=|youtu\.be\/|shorts\/)([A-Za-z0-9_-]{6,})/
+      );
+
+      if (match) {
+        return match[1];
+      }
+
+    }
+
+    return "";
+
+  }
+
+
+  /* ==========================================
+     YOUTUBE URL
+  ========================================== */
+
+  function youtubeUrl(item, id, type) {
+
+    if (id && type === "shorts") {
+
+      return "https://www.youtube.com/shorts/" + id;
+
+    }
+
+    if (id) {
+
+      return "https://www.youtube.com/watch?v=" + id;
+
+    }
+
+    return getValue(item, [
+      "url",
+      "videoUrl",
+      "link",
+      "youtubeUrl"
+    ]) || "https://www.youtube.com/@templewale";
+
+  }
+
+
+  /* ==========================================
+     THUMBNAIL
+  ========================================== */
+
+  function thumbnailUrl(item, id) {
+
+    const image = getValue(item, [
+      "thumbnail",
+      "thumbnailUrl",
+      "thumbnail_url",
+      "image",
+      "imageUrl"
+    ]);
+
+
+    if (image) {
+      return image;
+    }
+
+
+    if (id) {
+
+      return (
+        "https://i.ytimg.com/vi/" +
+        id +
+        "/hqdefault.jpg"
+      );
+
+    }
+
+
+    return "";
+
+  }
+
+
+  /* ==========================================
+     ESCAPE HTML
+  ========================================== */
+
+  function escapeHtml(text) {
+
+    return String(text || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /* ==========================================
+     DATE
+  ========================================== */
+
+  function formatDate(value) {
+
+    if (!value) return "";
+
+    const date = new Date(value);
+
+    if (isNaN(date.getTime())) {
+      return String(value);
+    }
+
+    return date.toLocaleDateString(
+      "en-IN",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }
+    );
+
+  }
+
+
+  /* ==========================================
+     SORT NEWEST
+  ========================================== */
+
+  function sortNewest(a, b) {
+
+    const da = new Date(
+      getValue(a, [
+        "published",
+        "publishedAt",
+        "date",
+        "published_at"
+      ])
+    ).getTime();
+
+
+    const db = new Date(
+      getValue(b, [
+        "published",
+        "publishedAt",
+        "date",
+        "published_at"
+      ])
+    ).getTime();
+
+
+    return db - da;
+
+  }
+
+
+  /* ==========================================
+     REMOVE DUPLICATES
+  ========================================== */
+
+  function unique(list) {
+
+    const seen = new Set();
+
+    return list.filter(function (item) {
+
+      const id = youtubeId(item);
+
+      if (!id) {
+        return true;
+      }
+
+      if (seen.has(id)) {
+        return false;
+      }
+
+      seen.add(id);
+
+      return true;
+
+    });
+
+  }
+
+
+  /* ==========================================
+     CREATE CARD
+  ========================================== */
+
+  function createCard(item, type) {
+
+    const id = youtubeId(item);
+
+    const title =
+      getValue(item, [
+        "title",
+        "name"
+      ]) || "Templewale";
+
+
+    const thumbnail =
+      thumbnailUrl(item, id);
+
+
+    const date =
+      getValue(item, [
+        "published",
+        "publishedAt",
+        "date",
+        "published_at"
+      ]);
+
+
+    const href =
+      youtubeUrl(item, id, type);
+
+
+    const isShort =
+      type === "shorts";
+
+
+    return `
+      <a
+        class="card"
+        href="${escapeHtml(href)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        ${
+          thumbnail
+            ? `
+              <div class="thumb-wrap ${isShort ? "short-thumb" : ""}">
+
+                <img
+                  class="thumb"
+                  src="${escapeHtml(thumbnail)}"
+                  alt="${escapeHtml(title)}"
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                >
+
+                <div class="play">
+                  ▶
+                </div>
+
+              </div>
+            `
+            : ""
+        }
+
+        <div class="content">
+
+          <span class="badge">
+            ${isShort ? "SHORT" : "VIDEO"}
+          </span>
+
+          <div class="title">
+            ${escapeHtml(title)}
+          </div>
+
+          ${
+            date
+              ? `
+                <div class="date">
+                  ${formatDate(date)}
+                </div>
+              `
+              : ""
+          }
+
+          <div class="watch">
+            Watch here →
+          </div>
+
+        </div>
+
+      </a>
+    `;
+
+  }
+
+
+  /* ==========================================
+     FETCH JSON
+  ========================================== */
+
+  async function getYouTubeData() {
+
+    const files = [
+      "data/videos.json",
+      "./data/videos.json",
+      "youtube.json",
+      "./youtube.json"
+    ];
+
+
+    let lastError = null;
+
+
+    for (const file of files) {
+
+      try {
+
+        const url =
+          new URL(
+            file,
+            document.baseURI
+          ).href +
+          "?v=" +
+          Date.now();
+
+
+        console.log(
+          "Trying:",
+          url
+        );
+
+
+        const response =
+          await fetch(
+            url,
+            {
+              cache: "no-store"
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            response.status +
+            " " +
+            response.statusText
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        console.log(
+          "Loaded:",
+          file
+        );
+
+
+        return data;
+
+      }
+
+      catch (error) {
+
+        console.warn(
+          "Failed:",
+          file,
+          error
+        );
+
+        lastError = error;
+
+      }
+
+    }
+
+
+    throw lastError ||
+      new Error(
+        "YouTube JSON file not found"
+      );
+
+  }
+
+
+  /* ==========================================
+     LOAD CONTENT
+  ========================================== */
+
+  async function loadContent() {
+
+    const videosElement =
+      document.getElementById("videos");
+
+
+    const shortsElement =
+      document.getElementById("shorts");
+
+
+    if (!videosElement || !shortsElement) {
+
+      console.error(
+        "Videos/Shorts container not found"
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      const data =
+        await getYouTubeData();
+
+
+      console.log(
+        "YouTube JSON:",
+        data
+      );
+
+
+      let videoList = [];
+
+      let shortList = [];
+
+
+      /* ======================================
+         NEW FORMAT
+         data/videos.json
+      ====================================== */
+
+      if (
+        data &&
+        Array.isArray(data.videos)
+      ) {
+
+        videoList =
+          data.videos;
+
+      }
+
+
+      if (
+        data &&
+        Array.isArray(data.shorts)
+      ) {
+
+        shortList =
+          data.shorts;
+
+      }
+
+
+      /* ======================================
+         ARRAY FORMAT FALLBACK
+      ====================================== */
+
+      if (Array.isArray(data)) {
+
+        videoList =
+          data.filter(function (item) {
+
+            return !isShortItem(item);
+
+          });
+
+
+        shortList =
+          data.filter(function (item) {
+
+            return isShortItem(item);
+
+          });
+
+      }
+
+
+      /* ======================================
+         ITEMS FORMAT FALLBACK
+      ====================================== */
+
+      if (
+        data &&
+        Array.isArray(data.items)
+      ) {
+
+        videoList =
+          data.items.filter(function (item) {
+
+            return !isShortItem(item);
+
+          });
+
+
+        shortList =
+          data.items.filter(function (item) {
+
+            return isShortItem(item);
+
+          });
+
+      }
+
+
+      videoList =
+        unique(videoList);
+
+
+      shortList =
+        unique(shortList);
+
+
+      videoList.sort(sortNewest);
+
+      shortList.sort(sortNewest);
+
+
+      console.log(
+        "Videos found:",
+        videoList.length
+      );
+
+
+      console.log(
+        "Shorts found:",
+        shortList.length
+      );
+
+
+      /* ======================================
+         VIDEOS
+      ====================================== */
+
+      if (videoList.length > 0) {
+
+        videosElement.innerHTML =
+          videoList
+            .slice(0, 6)
+            .map(function (item) {
+
+              return createCard(
+                item,
+                "videos"
+              );
+
+            })
+            .join("");
+
+      }
+
+      else {
+
+        videosElement.innerHTML = `
+          <div class="loading">
+            Latest videos अभी उपलब्ध नहीं हैं.
+          </div>
+        `;
+
+      }
+
+
+      /* ======================================
+         SHORTS
+      ====================================== */
+
+      if (shortList.length > 0) {
+
+        shortsElement.innerHTML =
+          shortList
+            .slice(0, 8)
+            .map(function (item) {
+
+              return createCard(
+                item,
+                "shorts"
+              );
+
+            })
+            .join("");
+
+      }
+
+      else {
+
+        shortsElement.innerHTML = `
+          <div class="loading">
+            Latest Shorts अभी उपलब्ध नहीं हैं.
+          </div>
+        `;
+
+      }
+
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "Templewale loading error:",
+        error
+      );
+
+
+      videosElement.innerHTML = `
+        <div class="loading">
+
+          Videos load नहीं हो पाए.
+
+          <br><br>
+
+          Please refresh the page.
+
+        </div>
+      `;
+
+
+      shortsElement.innerHTML = `
+        <div class="loading">
+
+          Shorts load नहीं हो पाए.
+
+          <br><br>
+
+          Please refresh the page.
+
+        </div>
+      `;
+
+    }
+
+  }
+
+
+  /* ==========================================
+     SHORT DETECTION
+  ========================================== */
+
+  function isShortItem(item) {
+
+    const type =
+      String(
+        getValue(item, [
+          "type",
+          "contentType",
+          "videoType",
+          "category",
+          "format",
+          "kind"
+        ])
+      ).toLowerCase();
+
+
+    if (type.includes("short")) {
+      return true;
+    }
+
+
+    const url =
+      String(
+        getValue(item, [
+          "url",
+          "videoUrl",
+          "link",
+          "youtubeUrl"
+        ])
+      ).toLowerCase();
+
+
+    if (url.includes("/shorts/")) {
+      return true;
+    }
+
+
+    return false;
+
+  }
+
+
+  /* ==========================================
+     START
+  ========================================== */
+
+  loadContent();
+
+})();
+
 </script>
 
 </body>
