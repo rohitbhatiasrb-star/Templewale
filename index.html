@@ -1,1373 +1,539 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Templewale — Hidden Mysteries of Sanatan Dharma</title>
-
-<meta
-  name="description"
-  content="Templewale — temples, Sanatan Dharma, spiritual journeys, stories and Shorts from India."
->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Templewale | Sanatan Dharma & Temple Journeys</title>
 
 <style>
-
-/* =====================================================
-   ROOT
-===================================================== */
-
-:root{
-  --bg:#080706;
-  --panel:#12100d;
-  --panel2:#1b1510;
-  --gold:#e7ad4b;
-  --cream:#fff4e2;
-  --muted:#b9aa95;
-  --line:#3a2b1c;
-  --gold2:#9f702f;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  margin:0;
-  background:
-    radial-gradient(
-      circle at 50% -10%,
-      #3b210d 0,
-      #0b0907 42%,
-      #070605 100%
-    );
-  color:var(--cream);
-  font-family:Arial,Inter,sans-serif;
-  line-height:1.55;
-}
-
-body.modal-open{
-  overflow:hidden;
+  background:#080706;
+  color:#f7ead5;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
-button{
-  font-family:inherit;
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.nav{
+header{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(8,7,6,.94);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line);
-}
-
-.navin{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  z-index:20;
+  background:#090807;
+  border-bottom:1px solid #3b2919;
+  padding:22px 6%;
 }
 
 .logo{
-  font-size:22px;
-  font-weight:900;
+  font-size:30px;
+  font-weight:800;
   letter-spacing:2px;
 }
 
 .logo span{
-  color:var(--gold);
+  color:#e7a23b;
 }
 
-.links{
-  display:flex;
-  gap:24px;
-  font-size:14px;
-  color:#eadfce;
+section{
+  padding:55px 6%;
 }
-
-.links a{
-  transition:.2s;
-}
-
-.links a:hover{
-  color:var(--gold);
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
 
 .hero{
-  min-height:72vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:80px 20px;
-
   background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.08),
-      rgba(0,0,0,.9)
-    ),
-    radial-gradient(
-      circle at center,
-      #5a300d 0,
-      transparent 55%
-    );
+    radial-gradient(circle at top right,#39200d 0,transparent 45%),
+    #0b0907;
 }
 
-.hero-inner{
-  max-width:900px;
+h1,h2{
+  font-size:44px;
+  line-height:1.15;
+  margin-bottom:20px;
 }
 
-.eyebrow{
-  color:var(--gold);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:3px;
-  text-transform:uppercase;
+h2{
+  font-size:40px;
 }
 
-.hero h1{
-  font-size:clamp(42px,8vw,82px);
-  line-height:.98;
-  margin:18px 0;
-  text-shadow:0 10px 45px #000;
-}
-
-.hero p{
-  max-width:760px;
-  margin:0 auto 25px;
-  color:#eadfce;
-  font-size:18px;
+p{
+  color:#c8b8a5;
+  font-size:19px;
+  margin-bottom:25px;
 }
 
 .btn{
   display:inline-block;
-  padding:12px 21px;
-  border-radius:30px;
-  background:var(--gold);
-  color:#1a0e04;
-  font-weight:900;
-  margin:5px;
-  transition:.2s;
+  color:#e9aa43;
+  font-weight:700;
+  font-size:18px;
+  margin:10px 0 30px;
 }
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.btn.alt{
-  background:transparent;
-  color:var(--cream);
-  border:1px solid #a97835;
-}
-
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 20px;
-}
-
-h2{
-  font-size:38px;
-  line-height:1.1;
-  margin:0 0 8px;
-}
-
-.intro{
-  color:var(--muted);
-  max-width:760px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.viewall{
-  color:var(--gold);
-  font-size:14px;
-  font-weight:800;
-}
-
-
-/* =====================================================
-   VIDEO GRID
-===================================================== */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:26px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
 }
 
 .card{
+  background:linear-gradient(145deg,#17100b,#0d0b09);
+  border:1px solid #51371e;
+  border-radius:20px;
   overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:
-    linear-gradient(
-      145deg,
-      var(--panel2),
-      var(--panel)
-    );
-  transition:
-    transform .2s,
-    border-color .2s,
-    box-shadow .2s;
-  cursor:pointer;
+  transition:.2s;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  border-color:#8f642e;
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.35);
-}
-
-.card:active{
-  transform:scale(.99);
+  transform:translateY(-3px);
+  border-color:#c47e25;
 }
 
 .thumb{
-  display:block;
   width:100%;
   aspect-ratio:16/9;
   object-fit:cover;
-  background:#16110c;
+  display:block;
+  background:#21150c;
 }
 
-.cardbody{
-  padding:12px 14px 14px;
-}
-
-.card h3{
-  font-size:16px;
-  line-height:1.35;
-  margin:0 0 7px;
-  word-break:break-word;
-}
-
-.meta{
-  font-size:11px;
-  color:var(--muted);
-}
-
-.watch{
-  display:inline-block;
-  margin-top:8px;
-  color:var(--gold);
-  font-size:12px;
-  font-weight:800;
-}
-
-
-/* =====================================================
-   SHORTS
-===================================================== */
-
-.shorts-grid{
-  grid-template-columns:repeat(4,1fr);
-}
-
-.short .thumb{
-  aspect-ratio:9/14;
-  object-fit:cover;
-}
-
-.short h3{
-  font-size:14px;
+.content{
+  padding:18px;
 }
 
 .badge{
   display:inline-block;
-  padding:3px 8px;
-  border:1px solid #795322;
-  border-radius:20px;
-  color:var(--gold);
-  font-size:9px;
-  margin-bottom:7px;
+  border:1px solid #9b692c;
+  color:#e5a23d;
+  border-radius:30px;
+  padding:3px 10px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.title{
+  font-size:19px;
   font-weight:700;
+  margin-bottom:8px;
 }
 
-
-/* =====================================================
-   EMPTY / LOADING
-===================================================== */
-
-.empty{
-  padding:25px;
-  border:1px dashed #594329;
-  border-radius:16px;
-  color:var(--muted);
-  text-align:center;
-  margin-top:22px;
-}
-
-
-/* =====================================================
-   TEMPLES
-===================================================== */
-
-.temples{
-  grid-template-columns:repeat(4,1fr);
-}
-
-.temple{
-  min-height:180px;
-  padding:20px;
-  display:flex;
-  align-items:end;
-  position:relative;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(0,0,0,.95)
-    ),
-    radial-gradient(
-      circle at 50% 20%,
-      #6a3c13,
-      #17100a 60%
-    );
-}
-
-.temple strong{
-  font-size:16px;
-}
-
-.temple small{
-  display:block;
-  color:var(--muted);
-  margin-top:4px;
-  font-size:11px;
-}
-
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:20px;
-}
-
-.panel{
-  padding:26px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:
-    linear-gradient(
-      145deg,
-      var(--panel2),
-      var(--panel)
-    );
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-  text-align:center;
-  border-top:1px solid var(--line);
-  padding:35px 20px;
-  color:#8f8272;
-}
-
-
-/* =====================================================
-   MODALS
-===================================================== */
-
-/*
-  IMPORTANT:
-  High z-index + visibility + opacity
-  fixes the issue where video plays but
-  modal is not visible.
-*/
-
-.modal{
-  position:fixed !important;
-  inset:0 !important;
-
-  z-index:99999 !important;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:20px;
-
-  background:rgba(0,0,0,.94);
-
-  backdrop-filter:blur(10px);
-
-  visibility:hidden;
-  opacity:0;
-
-  transition:opacity .15s ease;
-}
-
-.modal.show{
-  display:flex !important;
-  visibility:visible !important;
-  opacity:1 !important;
-}
-
-.modal-box{
-  position:relative !important;
-  z-index:100000 !important;
-
-  width:min(1000px,96vw);
-
-  max-height:94vh;
-
-  overflow:auto;
-
-  border:1px solid #6b4a25;
-
-  border-radius:20px;
-
-  background:#0d0b09;
-
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.9);
-
-  transform:translateZ(0);
-}
-
-.modal-video{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-}
-
-.modal-video iframe{
-  display:block;
-
-  width:100%;
-  height:100%;
-
-  border:0;
-}
-
-.modal-short{
-  width:min(480px,92vw);
-}
-
-.modal-short .modal-video{
-  aspect-ratio:9/16;
-  max-height:80vh;
-}
-
-.modal-info{
-  padding:18px 20px 20px;
-}
-
-.modal-info h3{
-  margin:0 0 5px;
-  font-size:20px;
-  line-height:1.3;
-}
-
-.modal-info p{
-  margin:0;
-  color:var(--muted);
+.date{
+  color:#927e69;
   font-size:13px;
+  margin-bottom:10px;
 }
 
-.close-modal{
-  position:absolute;
+.watch{
+  color:#e6a33e;
+  font-weight:bold;
+}
 
-  right:12px;
-  top:12px;
+.loading{
+  border:1px dashed #59452f;
+  border-radius:20px;
+  padding:35px 15px;
+  text-align:center;
+  color:#b9aa99;
+  font-size:18px;
+  grid-column:1/-1;
+}
 
-  z-index:100001 !important;
+.journey{
+  padding-top:20px;
+}
 
-  width:42px;
-  height:42px;
-
-  border:1px solid rgba(255,255,255,.4);
-
-  border-radius:50%;
-
-  background:rgba(0,0,0,.85);
-
-  color:white;
-
-  font-size:25px;
-
-  cursor:pointer;
-
+.journey-card{
+  min-height:170px;
+  padding:28px 22px;
   display:flex;
-  align-items:center;
-  justify-content:center;
+  flex-direction:column;
+  justify-content:end;
+  background:
+    radial-gradient(circle at top,#5a2e0d,transparent 55%),
+    #120d09;
 }
 
-.close-modal:hover{
-  background:#2b1b0e;
-  color:var(--gold);
+.journey-card h3{
+  font-size:19px;
+  margin-bottom:5px;
 }
 
-
-/* =====================================================
-   TEMPLE MODAL
-===================================================== */
-
-.temple-modal-box{
-  max-width:700px;
+.journey-card small{
+  color:#aa9a88;
+  font-size:14px;
 }
 
-.temple-modal-content{
+.dharma{
+  margin-top:45px;
+  border:1px solid #53381e;
+  border-radius:25px;
   padding:40px;
+  background:linear-gradient(145deg,#17110c,#0c0907);
 }
 
+footer{
+  border-top:1px solid #302116;
+  padding:35px 6%;
+  text-align:center;
+  color:#8e7d6c;
+}
 
-/* =====================================================
-   MOBILE
-===================================================== */
+@media(max-width:700px){
+  header{padding:18px 6%}
 
-@media(max-width:900px){
+  .logo{font-size:27px}
+
+  section{padding:42px 6%}
+
+  h1{font-size:38px}
+  h2{font-size:36px}
+
+  p{font-size:18px}
 
   .grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
   }
 
-  .shorts-grid{
-    grid-template-columns:repeat(2,1fr);
+  .content{
+    padding:14px;
   }
 
-  .temples{
-    grid-template-columns:repeat(2,1fr);
+  .title{
+    font-size:16px;
+    line-height:1.4;
   }
 
-  .about{
-    grid-template-columns:1fr;
+  .journey-card{
+    min-height:150px;
   }
 
+  .dharma{
+    padding:28px 22px;
+  }
 }
 
-
-@media(max-width:650px){
-
-  .navin{
-    padding:18px 20px;
-  }
-
-  .logo{
-    font-size:21px;
-  }
-
-  .links{
-    display:none;
-  }
-
-
-  /* HERO */
-
-  .hero{
-    min-height:68vh;
-    padding:70px 18px;
-  }
-
-  .hero h1{
-    font-size:44px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-
-  /* SECTIONS */
-
-  section{
-    padding:45px 16px;
+@media(max-width:430px){
+  .grid{
+    grid-template-columns:1fr 1fr;
   }
 
   h2{
-    font-size:30px;
+    font-size:34px;
   }
-
-  .section-head{
-    display:block;
-  }
-
-  .viewall{
-    display:inline-block;
-    margin-top:8px;
-  }
-
-
-  /* MOBILE GRID */
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-
-  .shorts-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .temples{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-
-  /* CARDS */
-
-  .card{
-    border-radius:12px;
-  }
-
-  .cardbody{
-    padding:10px;
-  }
-
-  .card h3{
-    font-size:13px;
-  }
-
-  .short h3{
-    font-size:12px;
-  }
-
-  .meta{
-    font-size:9px;
-  }
-
-  .watch{
-    font-size:10px;
-  }
-
-
-  /* TEMPLES */
-
-  .temple{
-    min-height:125px;
-    padding:13px;
-  }
-
-  .temple strong{
-    font-size:13px;
-  }
-
-  .temple small{
-    font-size:9px;
-  }
-
-
-  /* MODAL */
-
-  .modal{
-    padding:8px;
-  }
-
-  .modal-box{
-    width:96vw;
-    border-radius:15px;
-  }
-
-  .modal-short{
-    width:92vw;
-  }
-
-  .modal-info{
-    padding:15px;
-  }
-
-  .modal-info h3{
-    font-size:17px;
-  }
-
-  .close-modal{
-    width:38px;
-    height:38px;
-    font-size:22px;
-  }
-
-  .temple-modal-content{
-    padding:28px 20px;
-  }
-
 }
-
-
-/* =====================================================
-   EXTRA SMALL
-===================================================== */
-
-@media(max-width:380px){
-
-  .hero h1{
-    font-size:38px;
-  }
-
-  .grid{
-    gap:8px;
-  }
-
-  .card h3{
-    font-size:12px;
-  }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto;
-  }
-
-  *{
-    transition:none !important;
-  }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ===================================================
-     NAVIGATION
-=================================================== -->
-
-<nav class="nav">
-
-  <div class="navin">
-
-    <a class="logo" href="#home">
-      TEMPLE<span>WALE</span>
-    </a>
-
-    <div class="links">
-
-      <a href="#temples">Temples</a>
-
-      <a href="#videos">Videos</a>
-
-      <a href="#shorts">Shorts</a>
-
-      <a href="#dharma">Dharma</a>
-
-      <a href="#about">About</a>
-
-    </div>
-
-  </div>
-
-</nav>
-
-
-
-<!-- ===================================================
-     HERO
-=================================================== -->
-
-<header id="home" class="hero">
-
-  <div class="hero-inner">
-
-    <div class="eyebrow">
-      Temples • Dharma • Travel • Stories
-    </div>
-
-    <h1>
-      Hidden Mysteries of<br>
-      Sanatan Dharma
-    </h1>
-
-    <p>
-      भारत के प्राचीन मंदिरों, आध्यात्मिक यात्राओं और
-      सनातन परंपराओं की कहानियों को Templewale के
-      cinematic अंदाज़ में explore करें.
-    </p>
-
-    <a
-      class="btn"
-      href="#videos"
-    >
-      Latest Videos
-    </a>
-
-    <a
-      class="btn alt"
-      href="https://www.youtube.com/@templewale"
-      target="_blank"
-      rel="noopener"
-    >
-      Visit YouTube
-    </a>
-
-  </div>
-
+<header>
+  <div class="logo">TEMPLE<span>WALE</span></div>
 </header>
 
+<section class="hero">
+  <h1>Latest Videos</h1>
 
+  <p>
+    Templewale के latest videos automatically GitHub Actions
+    के माध्यम से update होंगे.
+  </p>
 
-<!-- ===================================================
-     LATEST VIDEOS
-=================================================== -->
+  <a class="btn"
+     href="https://www.youtube.com/@templewale"
+     target="_blank">
+     View on YouTube →
+  </a>
 
-<section id="videos">
+  <div id="videos" class="grid">
+    <div class="loading">YouTube videos load हो रहे हैं...</div>
+  </div>
+</section>
 
-  <div class="section-head">
+<section>
+  <h2>Latest Shorts</h2>
 
-    <div>
+  <p>
+    Short-form darshan, temple facts, Dharma stories
+    और यात्रा moments.
+  </p>
 
-      <h2>
-        Latest Videos
-      </h2>
+  <a class="btn"
+     href="https://www.youtube.com/@templewale/shorts"
+     target="_blank">
+     View Shorts →
+  </a>
 
-      <p class="intro">
-        Templewale के latest videos automatically GitHub
-        Actions के माध्यम से update होंगे.
-      </p>
+  <div id="shorts" class="grid">
+    <div class="loading">Shorts load हो रहे हैं...</div>
+  </div>
+</section>
 
-    </div>
+<section class="journey">
+  <h2>Temple Journeys</h2>
 
-    <a
-      class="viewall"
-      href="https://www.youtube.com/@templewale/videos"
-      target="_blank"
-      rel="noopener"
-    >
-      View on YouTube →
+  <p>
+    Templewale की प्रमुख यात्राओं और मंदिरों को explore करें.
+  </p>
+
+  <div class="grid">
+
+    <a class="card journey-card"
+       href="https://www.youtube.com/results?search_query=Templewale+Tarkeshwar+Mahadev"
+       target="_blank">
+      <h3>Tarkeshwar Mahadev</h3>
+      <small>Lansdowne, Uttarakhand</small>
+    </a>
+
+    <a class="card journey-card"
+       href="https://www.youtube.com/results?search_query=Templewale+Prakasheshwar+Mahadev"
+       target="_blank">
+      <h3>Prakasheshwar Mahadev</h3>
+      <small>Dehradun–Mussoorie Road</small>
+    </a>
+
+    <a class="card journey-card"
+       href="https://www.youtube.com/results?search_query=Templewale+Lakhamandal"
+       target="_blank">
+      <h3>Lakhamandal</h3>
+      <small>Ancient Shiva Temple</small>
+    </a>
+
+    <a class="card journey-card"
+       href="https://www.youtube.com/results?search_query=Templewale+Badrinath+Dham"
+       target="_blank">
+      <h3>Badrinath Dham</h3>
+      <small>Uttarakhand Yatra</small>
     </a>
 
   </div>
 
+  <div class="dharma">
+    <h2>Know Your Dharma</h2>
 
-  <div
-    id="videoGrid"
-    class="grid"
-  ></div>
-
-
-  <div
-    id="videoEmpty"
-    class="empty"
-  >
-    YouTube videos load हो रहे हैं…
-  </div>
-
-</section>
-
-
-
-<!-- ===================================================
-     LATEST SHORTS
-=================================================== -->
-
-<section id="shorts">
-
-  <div class="section-head">
-
-    <div>
-
-      <h2>
-        Latest Shorts
-      </h2>
-
-      <p class="intro">
-        Short-form darshan, temple facts, Dharma stories
-        और यात्रा moments.
-      </p>
-
-    </div>
-
-    <a
-      class="viewall"
-      href="https://www.youtube.com/@templewale/shorts"
-      target="_blank"
-      rel="noopener"
-    >
-      View Shorts →
-    </a>
-
-  </div>
-
-
-  <div
-    id="shortGrid"
-    class="grid shorts-grid"
-  ></div>
-
-
-  <div
-    id="shortEmpty"
-    class="empty"
-  >
-    Shorts load हो रहे हैं…
-  </div>
-
-</section>
-
-
-
-<!-- ===================================================
-     TEMPLE JOURNEYS
-=================================================== -->
-
-<section id="temples">
-
-  <div class="section-head">
-
-    <div>
-
-      <h2>
-        Temple Journeys
-      </h2>
-
-      <p class="intro">
-        Templewale की प्रमुख यात्राओं और मंदिरों को
-        explore करें.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="grid temples">
-
-
-    <div
-      class="card temple"
-      data-temple-name="Tarkeshwar Mahadev"
-      data-temple-location="Lansdowne, Uttarakhand"
-    >
-
-      <div>
-
-        <strong>
-          Tarkeshwar Mahadev
-        </strong>
-
-        <small>
-          Lansdowne, Uttarakhand
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="card temple"
-      data-temple-name="Prakasheshwar Mahadev"
-      data-temple-location="Dehradun–Mussoorie Road"
-    >
-
-      <div>
-
-        <strong>
-          Prakasheshwar Mahadev
-        </strong>
-
-        <small>
-          Dehradun–Mussoorie Road
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="card temple"
-      data-temple-name="Lakhamandal"
-      data-temple-location="Uttarkashi, Uttarakhand"
-    >
-
-      <div>
-
-        <strong>
-          Lakhamandal
-        </strong>
-
-        <small>
-          Ancient Shiva Temple
-        </small>
-
-      </div>
-
-    </div>
-
-
-    <div
-      class="card temple"
-      data-temple-name="Badrinath Dham"
-      data-temple-location="Chamoli, Uttarakhand"
-    >
-
-      <div>
-
-        <strong>
-          Badrinath Dham
-        </strong>
-
-        <small>
-          Uttarakhand Yatra
-        </small>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ===================================================
-     DHARMA
-=================================================== -->
-
-<section id="dharma">
-
-  <div class="panel">
-
-    <h2>
-      Know Your Dharma
-    </h2>
-
-    <p class="intro">
-
+    <p>
       Sanatan Dharma, Karma, आत्मा, सत्य, अहिंसा,
-      गुरु, माता-पिता और नारी सम्मान जैसे विषयों पर
-      सरल और meaningful stories.
-
+      माता-पिता, गुरु और नारी सम्मान जैसे विषयों को
+      सरल भाषा में समझें.
     </p>
 
-    <a
-      class="watch"
-      href="https://www.youtube.com/@templewale"
-      target="_blank"
-      rel="noopener"
-    >
-      Explore Dharma on YouTube →
+    <a class="btn"
+       href="https://www.youtube.com/@templewale/search?query=Know%20Your%20Dharma"
+       target="_blank">
+       Explore Dharma →
     </a>
-
   </div>
-
 </section>
 
-
-
-<!-- ===================================================
-     ABOUT
-=================================================== -->
-
-<section id="about">
-
-  <div class="about">
-
-
-    <div class="panel">
-
-      <h2>
-        About Templewale
-      </h2>
-
-      <p>
-
-        Templewale भारत के मंदिरों, आध्यात्मिक परंपराओं,
-        यात्राओं और Sanatan Dharma की कहानियों को
-        cinematic तरीके से प्रस्तुत करता है.
-
-      </p>
-
-      <p class="meta">
-
-        Website content is automatically refreshed from
-        the Templewale YouTube channel through GitHub Actions.
-
-      </p>
-
-    </div>
-
-
-    <div class="panel">
-
-      <h3
-        style="color:var(--gold);margin-top:0"
-      >
-        Stay Connected
-      </h3>
-
-      <p class="meta">
-        YouTube • Instagram • Travel • Dharma
-      </p>
-
-      <a
-        class="btn"
-        href="https://www.youtube.com/@templewale"
-        target="_blank"
-        rel="noopener"
-      >
-        Subscribe on YouTube
-      </a>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- ===================================================
-     FOOTER
-=================================================== -->
-
-<footer class="footer">
-
-  © Templewale • Hidden Mysteries of Sanatan Dharma
-
+<footer>
+  © Templewale • Sanatan • Temples • Travel • Dharma
 </footer>
-
-
-
-<!-- ===================================================
-     VIDEO MODAL
-=================================================== -->
-
-<div
-  id="videoModal"
-  class="modal"
-  aria-hidden="true"
->
-
-  <div class="modal-box">
-
-    <button
-      id="closeVideo"
-      class="close-modal"
-      type="button"
-      aria-label="Close video"
-    >
-      ×
-    </button>
-
-    <div class="modal-video">
-
-      <iframe
-        id="videoFrame"
-        src=""
-        title="Templewale Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-
-    </div>
-
-    <div class="modal-info">
-
-      <h3 id="modalVideoTitle">
-        Templewale
-      </h3>
-
-      <p id="modalVideoDate"></p>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- ===================================================
-     SHORT MODAL
-=================================================== -->
-
-<div
-  id="shortModal"
-  class="modal"
-  aria-hidden="true"
->
-
-  <div class="modal-box modal-short">
-
-    <button
-      id="closeShort"
-      class="close-modal"
-      type="button"
-      aria-label="Close short"
-    >
-      ×
-    </button>
-
-    <div class="modal-video">
-
-      <iframe
-        id="shortFrame"
-        src=""
-        title="Templewale Short"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-
-    </div>
-
-    <div class="modal-info">
-
-      <h3 id="modalShortTitle">
-        Templewale Short
-      </h3>
-
-      <p id="modalShortDate"></p>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- ===================================================
-     TEMPLE MODAL
-=================================================== -->
-
-<div
-  id="templeModal"
-  class="modal"
-  aria-hidden="true"
->
-
-  <div class="modal-box temple-modal-box">
-
-    <button
-      id="closeTemple"
-      class="close-modal"
-      type="button"
-      aria-label="Close temple"
-    >
-      ×
-    </button>
-
-    <div class="temple-modal-content">
-
-      <div class="eyebrow">
-        TEMPLE JOURNEY
-      </div>
-
-      <h3
-        id="modalTempleName"
-        style="font-size:30px;margin:10px 0 5px"
-      >
-        Temple
-      </h3>
-
-      <p
-        id="modalTempleLocation"
-        style="font-size:16px;color:var(--muted)"
-      >
-        Uttarakhand
-      </p>
-
-      <br>
-
-      <a
-        class="btn"
-        href="https://www.youtube.com/@templewale"
-        target="_blank"
-        rel="noopener"
-      >
-        Explore on YouTube →
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
 
 <script>
 
-/* =====================================================
-   BASIC HELPERS
-===================================================== */
+function getArray(data,type){
+
+  if(Array.isArray(data)) return data;
+
+  if(data && Array.isArray(data[type]))
+    return data[type];
+
+  if(data && Array.isArray(data.items))
+    return data.items;
+
+  if(data && Array.isArray(data.videos) && type==="videos")
+    return data.videos;
+
+  if(data && Array.isArray(data.shorts) && type==="shorts")
+    return data.shorts;
+
+  return [];
+}
+
+function getValue(item,keys){
+
+  for(const key of keys){
+    if(item && item[key] !== undefined && item[key] !== null)
+      return item[key];
+  }
+
+  return "";
+}
+
+function youtubeId(item){
+
+  let id=getValue(item,[
+    "videoId",
+    "video_id",
+    "id"
+  ]);
+
+  if(typeof id==="object" && id)
+    id=id.videoId || id.id || "";
+
+  if(id) return String(id);
+
+  const url=getValue(item,[
+    "url",
+    "videoUrl",
+    "link",
+    "youtubeUrl"
+  ]);
+
+  if(url){
+
+    const match=String(url).match(
+      /(?:v=|youtu\.be\/|shorts\/)([A-Za-z0-9_-]{6,})/
+    );
+
+    if(match) return match[1];
+  }
+
+  return "";
+}
+
+function card(item,type){
+
+  const id=youtubeId(item);
+
+  const title=getValue(item,[
+    "title",
+    "name"
+  ]) || "Templewale Video";
+
+  const thumbnail=getValue(item,[
+    "thumbnail",
+    "thumbnailUrl",
+    "image",
+    "imageUrl"
+  ]) || (id
+    ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
+    : "");
+
+  const date=getValue(item,[
+    "publishedAt",
+    "published",
+    "date",
+    "published_at"
+  ]);
+
+  const href=id
+    ? `https://www.youtube.com/watch?v=${id}`
+    : getValue(item,["url","link"]) || "https://www.youtube.com/@templewale";
+
+  return `
+    <a class="card" href="${href}" target="_blank">
+
+      ${
+        thumbnail
+        ? `<img class="thumb"
+                src="${thumbnail}"
+                alt="${escapeHtml(title)}"
+                loading="lazy"
+                onerror="this.style.display='none'">`
+        : ""
+      }
+
+      <div class="content">
+
+        <span class="badge">
+          ${type==="shorts" ? "SHORT" : "VIDEO"}
+        </span>
+
+        <div class="title">
+          ${escapeHtml(title)}
+        </div>
+
+        ${
+          date
+          ? `<div class="date">${formatDate(date)}</div>`
+          : ""
+        }
+
+        <div class="watch">
+          Watch video →
+        </div>
+
+      </div>
+    </a>
+  `;
+}
+
+function escapeHtml(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
 
 function formatDate(value){
 
-  if(!value){
-    return '';
-  }
+  const d=new Date(value);
 
-  const date = new Date(value);
+  if(isNaN(d)) return String(value);
 
-  if(Number.isNaN(date.getTime())){
-    return String(value);
-  }
-
-  return date.toLocaleDateString(
-    'en-GB',
-    {
-      day:'2-digit',
-      month:'short',
-      year:'numeric'
-    }
-  );
+  return d.toLocaleDateString("en-IN",{
+    day:"2-digit",
+    month:"short",
+    year:"numeric"
+  });
 }
 
+async function load(){
 
-/* =====================================================
-   CREATE VIDEO CARD
-===================================================== */
+  const videos=document.getElementById("videos");
+  const shorts=document.getElementById("shorts");
 
-function createVideoCard(video){
+  try{
 
-  const article =
+    const response=await fetch(
+      "./youtube.json?v="+Date.now()
+    );
+
+    if(!response.ok)
+      throw new Error("youtube.json नहीं मिला");
+
+    const data=await response.json();
+
+    const videoList=getArray(data,"videos");
+    const shortList=getArray(data,"shorts");
+
+    videos.innerHTML=videoList.length
+      ? videoList.slice(0,6).map(x=>card(x,"videos")).join("")
+      : `<div class="loading">Latest videos अभी उपलब्ध नहीं हैं.</div>`;
+
+    shorts.innerHTML=shortList.length
+      ? shortList.slice(0,8).map(x=>card(x,"shorts")).join("")
+      : `<div class="loading">Latest Shorts अभी उपलब्ध नहीं हैं.</div>`;
+
+  }catch(error){
+
+    console.error(error);
+
+    videos.innerHTML=
+      `<div class="loading">
+        Videos load नहीं हो पाए.<br>
+        कृपया थोड़ी देर बाद refresh करें.
+       </div>`;
+
+    shorts.innerHTML=
+      `<div class="loading">
+        Shorts load नहीं हो पाए.<br>
+        कृपया थोड़ी देर बाद refresh करें.
+       </div>`;
+  }
+}
+
+load();
+
+</script>
+
+</body>
+</html>
