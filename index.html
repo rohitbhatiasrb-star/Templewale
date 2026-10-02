@@ -1,1360 +1,1870 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080706">
-<meta name="description" content="Templewale — मंदिर, यात्रा, Sanatan Dharma और आध्यात्मिक अनुभव।">
-<title>Templewale — Hidden Mysteries of Sanatan Dharma</title>
+
+<title>Templewale | Hidden Mysteries of Sanatan Dharma</title>
+
+<meta name="description"
+content="Templewale – Explore temples, spiritual journeys, Sanatan Dharma, temple stories, facts and devotional experiences.">
+
+<meta name="theme-color" content="#090807">
 
 <style>
-:root{
-  --bg:#080706;
-  --card:#0d0b09;
-  --text:#f7eadb;
-  --muted:#c8b9a9;
-  --gold:#f0a43a;
-  --border:#4b321b;
-}
 
 *{
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.55;
+    background:#080706;
+    color:#f7ead9;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    overflow-x:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
+/* =========================
+   HEADER
+========================= */
 
-/* HEADER */
-.header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(8,7,6,.96);
-  border-bottom:1px solid #30251c;
-  backdrop-filter:blur(10px);
+header{
+    width:100%;
+    background:#080706;
+    border-bottom:1px solid rgba(225,158,55,.28);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .header-inner{
-  max-width:1180px;
-  margin:auto;
-  padding:25px 42px;
+    max-width:1400px;
+    margin:auto;
+    padding:28px 42px;
 }
 
 .logo{
-  font-size:48px;
-  font-weight:900;
-  letter-spacing:-1.5px;
+    font-size:48px;
+    line-height:1;
+    font-weight:900;
+    letter-spacing:-2px;
 }
 
-.logo span{
-  color:var(--gold);
+.logo-white{
+    color:#f7ead9;
 }
 
-/* HERO */
-.hero{
-  min-height:300px;
-  display:flex;
-  align-items:center;
-  background:
-    radial-gradient(
-      circle at 85% 15%,
-      rgba(240,164,58,.16),
-      transparent 35%
-    ),
-    linear-gradient(180deg,#0b0907,#130b05);
+.logo-gold{
+    color:#e99a2f;
 }
 
-.hero-inner{
-  width:100%;
-  max-width:1180px;
-  margin:auto;
-  padding:75px 42px 65px;
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:100%;
 }
 
-.eyebrow{
-  color:var(--gold);
-  font-weight:800;
-  font-size:16px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-.hero h1{
-  margin:10px 0 15px;
-  font-size:clamp(42px,7vw,78px);
-  line-height:1.02;
-}
-
-.hero p{
-  max-width:720px;
-  color:var(--muted);
-  font-size:20px;
-  margin:0;
-}
-
-/* SECTIONS */
 .section{
-  padding:72px 42px;
-  max-width:1180px;
-  margin:auto;
+    max-width:1400px;
+    margin:auto;
+    padding:85px 42px;
 }
 
-.section h2{
-  font-size:clamp(40px,5vw,62px);
-  line-height:1.05;
-  margin:0 0 22px;
+.section.dark{
+    background:#080706;
 }
 
-.section-desc{
-  color:var(--muted);
-  font-size:20px;
-  max-width:780px;
-  margin:0 0 24px;
+.section-title{
+    font-size:64px;
+    line-height:1.05;
+    font-weight:800;
+    letter-spacing:-2px;
+    margin-bottom:24px;
 }
 
-.section-link{
-  display:inline-block;
-  color:var(--gold);
-  font-size:21px;
-  font-weight:800;
-  margin:0 0 34px;
+.section-description{
+    max-width:850px;
+    font-size:24px;
+    line-height:1.7;
+    color:#cbbdaf;
+    margin-bottom:28px;
 }
 
-/* VIDEO GRID */
-.grid{
-  display:grid;
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-  gap:24px;
+.youtube-link{
+    display:inline-block;
+    color:#e9a13b;
+    font-size:24px;
+    font-weight:700;
+    text-decoration:none;
+    margin-bottom:42px;
 }
 
-/* CARD */
+.youtube-link:hover{
+    color:#ffbd59;
+}
+
+/* =========================
+   VIDEO GRID
+========================= */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
 .video-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.25);
+    background:#0d0b09;
+    border:1px solid rgba(223,155,54,.35);
+    border-radius:30px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
-.player{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-  position:relative;
-  overflow:hidden;
+.video-card:hover{
+    transform:translateY(-5px);
+    border-color:#d99331;
+    box-shadow:0 15px 45px rgba(0,0,0,.5);
 }
 
-.player iframe{
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
+.thumbnail-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#111;
+    overflow:hidden;
 }
 
-.card-info{
-  padding:22px 22px 24px;
+.thumbnail{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-.card-title{
-  font-size:21px;
-  font-weight:800;
-  line-height:1.3;
-  margin:0 0 9px;
+.play-button{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background:rgba(0,0,0,.78);
+    border:2px solid rgba(255,255,255,.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    padding-left:5px;
+    backdrop-filter:blur(5px);
 }
 
-.card-date{
-  color:#a99989;
-  font-size:14px;
+.video-info{
+    padding:26px 28px 30px;
 }
 
-/* SHORTS */
-.short-grid{
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:20px;
+.video-title{
+    font-size:27px;
+    line-height:1.3;
+    font-weight:800;
+    color:#f8ecdc;
+    margin-bottom:15px;
 }
 
-.short-card .player{
-  aspect-ratio:9/16;
+.video-date{
+    font-size:17px;
+    color:#bcae9e;
 }
 
-.short-card .card-info{
-  padding:17px;
+/* =========================
+   SHORTS
+========================= */
+
+.shorts-section{
+    background:#080706;
 }
 
-.short-card .card-title{
-  font-size:17px;
+.shorts-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
 }
 
-/* EMPTY / LOADING */
-.empty,
+.short-card{
+    background:#0d0b09;
+    border:1px solid rgba(223,155,54,.35);
+    border-radius:26px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.short-card:hover{
+    transform:translateY(-5px);
+    border-color:#d99331;
+}
+
+.short-thumbnail{
+    position:relative;
+    width:100%;
+    aspect-ratio:9/16;
+    background:#111;
+    overflow:hidden;
+}
+
+.short-thumbnail img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.short-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:rgba(0,0,0,.78);
+    border:2px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    padding-left:4px;
+}
+
+.short-info{
+    padding:18px;
+}
+
+.short-title{
+    font-size:19px;
+    line-height:1.4;
+    font-weight:700;
+}
+
+/* =========================
+   LOADING
+========================= */
+
 .loading{
-  border:1px dashed #5b432b;
-  border-radius:25px;
-  padding:50px 20px;
-  text-align:center;
-  color:#b7a89a;
-  font-size:19px;
-  grid-column:1/-1;
+    min-height:190px;
+    border:1px dashed rgba(223,155,54,.45);
+    border-radius:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#bcae9e;
+    font-size:23px;
+    text-align:center;
 }
 
-/* FOOTER */
-.footer{
-  border-top:1px solid #2d2118;
-  padding:38px 42px;
-  text-align:center;
-  color:#8f8174;
-  background:#070605;
+.empty{
+    border:1px dashed rgba(223,155,54,.35);
+    border-radius:28px;
+    padding:55px 20px;
+    text-align:center;
+    color:#a99b8e;
+    font-size:20px;
 }
 
-/* TABLET */
+/* =========================
+   PLAYER MODAL
+========================= */
+
+.player-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.93);
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.player-overlay.active{
+    display:flex;
+}
+
+.player-box{
+    width:min(1000px,100%);
+    background:#0c0b09;
+    border:1px solid rgba(223,155,54,.5);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 30px 100px rgba(0,0,0,.8);
+}
+
+.player-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    border-bottom:1px solid rgba(223,155,54,.2);
+}
+
+.player-title{
+    font-size:18px;
+    font-weight:700;
+    color:#f7ead9;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding-right:20px;
+}
+
+.close-player{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    background:#151311;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.player-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+}
+
+.player-frame iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* Shorts player */
+
+.player-frame.short-player{
+    width:min(430px,100%);
+    aspect-ratio:9/16;
+    margin:auto;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid rgba(223,155,54,.25);
+    background:#070605;
+    padding:50px 30px;
+    text-align:center;
+    color:#998b7d;
+}
+
+.footer-logo{
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.footer-text{
+    font-size:15px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:900px){
 
-  .grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-  }
+    .header-inner{
+        padding:25px 42px;
+    }
 
-  .short-grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-  }
+    .logo{
+        font-size:40px;
+    }
+
+    .section{
+        padding:70px 42px;
+    }
+
+    .section-title{
+        font-size:50px;
+    }
+
+    .section-description{
+        font-size:21px;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .shorts-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
 }
 
-/* MOBILE */
-@media(max-width:650px){
+@media(max-width:600px){
 
-  .header-inner{
-    padding:18px 22px;
-  }
+    .header-inner{
+        padding:25px 40px;
+    }
 
-  .logo{
-    font-size:38px;
-  }
+    .logo{
+        font-size:39px;
+    }
 
-  .hero-inner,
-  .section{
-    padding-left:22px;
-    padding-right:22px;
-  }
+    .section{
+        padding:70px 40px;
+    }
 
-  .hero-inner{
-    padding-top:55px;
-    padding-bottom:50px;
-  }
+    .section-title{
+        font-size:48px;
+        letter-spacing:-1.5px;
+    }
 
-  .hero{
-    min-height:260px;
-  }
+    .section-description{
+        font-size:20px;
+        line-height:1.65;
+    }
 
-  .hero p,
-  .section-desc{
-    font-size:18px;
-  }
+    .youtube-link{
+        font-size:21px;
+    }
 
-  .grid,
-  .short-grid{
-    grid-template-columns:1fr;
-  }
+    .video-card{
+        border-radius:28px;
+    }
 
-  .section{
-    padding-top:58px;
-    padding-bottom:58px;
-  }
+    .video-title{
+        font-size:25px;
+    }
 
-  .section h2{
-    font-size:43px;
-  }
+    .shorts-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .short-title{
+        font-size:17px;
+    }
 }
+
+@media(max-width:420px){
+
+    .header-inner{
+        padding:24px 25px;
+    }
+
+    .logo{
+        font-size:34px;
+    }
+
+    .section{
+        padding:60px 25px;
+    }
+
+    .section-title{
+        font-size:42px;
+    }
+
+    .section-description{
+        font-size:18px;
+    }
+
+    .video-info{
+        padding:22px;
+    }
+
+    .video-title{
+        font-size:22px;
+    }
+
+    .shorts-grid{
+        gap:12px;
+    }
+
+    .short-info{
+        padding:13px;
+    }
+
+    .short-title{
+        font-size:15px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<header class="header">
+<!-- =========================
+     HEADER
+========================= -->
 
-  <div class="header-inner">
+<header>
 
-    <a class="logo" href="#top">
-      TEMPLE<span>WALE</span>
-    </a>
+<div class="header-inner">
 
-  </div>
+<div class="logo">
+<span class="logo-white">TEMPLE</span><span class="logo-gold">WALE</span>
+</div>
+
+</div>
 
 </header>
 
 
-<main id="top">
+<main>
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     LATEST VIDEOS
+========================= -->
 
-<section class="hero">
+<section class="section dark">
 
-  <div class="hero-inner">
+<h1 class="section-title">
+Latest Videos
+</h1>
 
-    <div class="eyebrow">
-      Hidden Mysteries of Sanatan Dharma
-    </div>
+<p class="section-description">
+Templewale के latest videos — मंदिर, यात्रा,
+Sanatan Dharma और आध्यात्मिक अनुभव।
+</p>
 
-    <h1>
-      Templewale
-    </h1>
+<a
+class="youtube-link"
+href="https://www.youtube.com/@templewale"
+target="_blank"
+rel="noopener">
+View on YouTube →
+</a>
 
-    <p>
-      मंदिर, यात्रा, Sanatan Dharma और आध्यात्मिक अनुभव —
-      सीधे आपके सामने।
-    </p>
+<div
+id="videosContainer"
+class="video-grid">
 
-  </div>
+<div class="loading">
+Videos load हो रहे हैं...
+</div>
 
-</section>
-
-
-<!-- ================= LATEST VIDEOS ================= -->
-
-<section class="section">
-
-  <h2>
-    Latest Videos
-  </h2>
-
-  <p class="section-desc">
-    Templewale के latest videos — मंदिर, यात्रा,
-    Sanatan Dharma और आध्यात्मिक अनुभव।
-  </p>
-
-  <a
-    class="section-link"
-    href="https://www.youtube.com/@templewale"
-    target="_blank"
-    rel="noopener"
-  >
-    View on YouTube →
-  </a>
-
-  <div id="videos" class="grid">
-
-    <div class="loading">
-      Videos load हो रहे हैं...
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- ================= LATEST SHORTS ================= -->
+<!-- =========================
+     LATEST SHORTS
+========================= -->
 
-<section class="section">
+<section class="section shorts-section">
 
-  <h2>
-    Latest Shorts
-  </h2>
+<h2 class="section-title">
+Latest Shorts
+</h2>
 
-  <p class="section-desc">
-    छोटे लेकिन खास moments — दर्शन, मंदिर facts,
-    Dharma stories और यात्रा।
-  </p>
+<p class="section-description">
+छोटे लेकिन खास moments — दर्शन, मंदिर facts,
+Dharma stories और यात्रा।
+</p>
 
-  <a
-    class="section-link"
-    href="https://www.youtube.com/@templewale/shorts"
-    target="_blank"
-    rel="noopener"
-  >
-    View All Shorts →
-  </a>
+<a
+class="youtube-link"
+href="https://www.youtube.com/@templewale/shorts"
+target="_blank"
+rel="noopener">
+View All Shorts →
+</a>
 
-  <div id="shorts" class="short-grid">
+<div
+id="shortsContainer"
+class="shorts-grid">
 
-    <div class="loading">
-      Shorts load हो रहे हैं...
-    </div>
+<div class="loading">
+Shorts load हो रहे हैं...
+</div>
 
-  </div>
+</div>
 
 </section>
 
 </main>
 
 
-<footer class="footer">
+<!-- =========================
+     PLAYER
+========================= -->
 
-  © <span id="year"></span>
-  Templewale · Hidden Mysteries of Sanatan Dharma
+<div
+id="playerOverlay"
+class="player-overlay">
+
+<div class="player-box">
+
+<div class="player-top">
+
+<div
+id="playerTitle"
+class="player-title">
+Templewale
+</div>
+
+<button
+id="closePlayer"
+class="close-player"
+aria-label="Close">
+×
+</button>
+
+</div>
+
+<div
+id="playerFrame"
+class="player-frame">
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-logo">
+<span class="logo-white">TEMPLE</span><span class="logo-gold">WALE</span>
+</div>
+
+<div class="footer-text">
+Hidden Mysteries of Sanatan Dharma
+</div>
 
 </footer>
 
 
 <script>
 
-/*
-========================================================
-TEMPLEWALE WEBSITE
-========================================================
-
-This page reads youtube.json from the same repository.
-
-Videos are embedded directly inside the website.
-
-Temple Journeys has been completely removed.
-========================================================
-*/
+/* ==========================================================
+   TEMPLEWALE WEBSITE
+   ========================================================== */
 
 
-const DATA_URL = "./youtube.json";
+/* =========================
+   CONFIG
+========================= */
 
-const VIDEO_LIMIT = 6;
+const DATA_FILES = [
+    "youtube.json",
+    "data/youtube.json",
+    "data/videos.json",
+    "videos.json"
+];
 
-const SHORT_LIMIT = 8;
+const MAX_VIDEOS = 10;
+const MAX_SHORTS = 10;
 
 
-/* =========================================
-   HELPER
-========================================= */
+/* =========================
+   DOM
+========================= */
 
-function text(v){
+const videosContainer =
+    document.getElementById("videosContainer");
 
-  return v == null
-    ? ""
-    : String(v);
+const shortsContainer =
+    document.getElementById("shortsContainer");
 
+const playerOverlay =
+    document.getElementById("playerOverlay");
+
+const playerFrame =
+    document.getElementById("playerFrame");
+
+const playerTitle =
+    document.getElementById("playerTitle");
+
+const closePlayer =
+    document.getElementById("closePlayer");
+
+
+/* =========================
+   UTILITY
+========================= */
+
+function text(value){
+
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value).trim();
 }
 
 
-/* =========================================
+function escapeHTML(value){
+
+    return text(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+/* =========================
    GET VALUE
-========================================= */
+========================= */
 
-function get(obj, keys){
+function getValue(item, keys){
 
-  for(const key of keys){
+    for(const key of keys){
 
-    if(
-      obj &&
-      obj[key] != null &&
-      text(obj[key]).trim() !== ""
-    ){
-
-      return obj[key];
+        if(
+            item &&
+            item[key] !== undefined &&
+            item[key] !== null &&
+            text(item[key]) !== ""
+        ){
+            return item[key];
+        }
 
     }
 
-  }
-
-  return "";
-
+    return "";
 }
 
 
-/* =========================================
-   EXTRACT YOUTUBE VIDEO ID
-========================================= */
+/* =========================
+   VIDEO ID
+========================= */
 
 function getVideoId(item){
 
-  const direct = get(item,[
-    "videoId",
-    "videoID",
-    "id",
-    "youtubeId",
-    "youtube_id",
-    "ytId",
-    "yt_id"
-  ]);
+    if(!item){
+        return "";
+    }
 
-  if(direct){
+    let id = getValue(item,[
+        "videoId",
+        "youtubeId",
+        "youtube_id",
+        "id"
+    ]);
 
-    const s = text(direct).trim();
+    id = text(id);
 
-    if(
-      /^[A-Za-z0-9_-]{11}$/.test(s)
-    ){
+    /*
+       If ID itself contains a YouTube URL,
+       extract the actual ID.
+    */
 
-      return s;
+    if(id.includes("youtube.com") || id.includes("youtu.be")){
+
+        const extracted =
+            extractVideoId(id);
+
+        if(extracted){
+            return extracted;
+        }
 
     }
 
-    const fromUrl = extractId(s);
-
-    if(fromUrl){
-
-      return fromUrl;
-
-    }
-
-  }
-
-
-  const url = get(item,[
-    "url",
-    "videoUrl",
-    "video_url",
-    "link",
-    "youtubeUrl",
-    "youtube_url",
-    "watchUrl",
-    "watch_url",
-    "shortUrl",
-    "short_url"
-  ]);
-
-  return extractId(text(url));
-
+    return id;
 }
 
 
-/* =========================================
-   URL TO VIDEO ID
-========================================= */
+/* =========================
+   EXTRACT YOUTUBE ID
+========================= */
 
-function extractId(value){
+function extractVideoId(value){
 
-  if(!value){
+    let url = text(value);
+
+    if(!url){
+        return "";
+    }
+
+    try{
+
+        /*
+           Shorts
+        */
+
+        let match =
+            url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/);
+
+        if(match){
+            return match[1];
+        }
+
+
+        /*
+           Normal watch URL
+        */
+
+        match =
+            url.match(/[?&]v=([a-zA-Z0-9_-]{6,})/);
+
+        if(match){
+            return match[1];
+        }
+
+
+        /*
+           youtu.be
+        */
+
+        match =
+            url.match(/youtu\.be\/([a-zA-Z0-9_-]{6,})/);
+
+        if(match){
+            return match[1];
+        }
+
+
+        /*
+           Embed URL
+        */
+
+        match =
+            url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/);
+
+        if(match){
+            return match[1];
+        }
+
+    }catch(error){
+
+        console.log("URL parsing error:",error);
+
+    }
 
     return "";
-
-  }
-
-  const s = String(value).trim();
-
-
-  if(
-    /^[A-Za-z0-9_-]{11}$/.test(s)
-  ){
-
-    return s;
-
-  }
-
-
-  const patterns = [
-
-    /[?&]v=([A-Za-z0-9_-]{11})/,
-
-    /youtu\.be\/([A-Za-z0-9_-]{11})/,
-
-    /youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{11})/,
-
-    /youtube\.com\/shorts\/([A-Za-z0-9_-]{11})/,
-
-    /youtube\.com\/live\/([A-Za-z0-9_-]{11})/
-
-  ];
-
-
-  for(
-    const p of patterns
-  ){
-
-    const m = s.match(p);
-
-    if(m){
-
-      return m[1];
-
-    }
-
-  }
-
-
-  return "";
-
 }
 
 
-/* =========================================
-   TITLE
-========================================= */
+/* =========================
+   GET URL
+========================= */
 
-function getTitle(item){
+function getUrl(item){
 
-  return text(
-    get(item,[
-      "title",
-      "name",
-      "videoTitle",
-      "video_title"
-    ])
-  ).trim() || "Templewale";
-
+    return text(
+        getValue(item,[
+            "url",
+            "link",
+            "youtubeUrl",
+            "youtube_url",
+            "videoUrl",
+            "video_url"
+        ])
+    );
 }
 
 
-/* =========================================
-   DATE
-========================================= */
-
-function getDate(item){
-
-  return text(
-    get(item,[
-      "published",
-      "publishedAt",
-      "published_at",
-      "date",
-      "publishedDate",
-      "uploadDate"
-    ])
-  ).trim();
-
-}
-
-
-/* =========================================
-   THUMBNAIL
-========================================= */
-
-function getThumbnail(item,id){
-
-  const custom = get(item,[
-    "thumbnail",
-    "thumbnailUrl",
-    "thumbnail_url",
-    "image",
-    "imageUrl",
-    "image_url"
-  ]);
-
-
-  return text(custom).trim()
-    ||
-    `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-
-}
-
-
-/* =========================================
-   CONVERT DATA TO ARRAY
-========================================= */
-
-function toArray(data){
-
-  if(Array.isArray(data)){
-
-    return data;
-
-  }
-
-
-  if(
-    data &&
-    Array.isArray(data.videos)
-  ){
-
-    return data.videos;
-
-  }
-
-
-  if(
-    data &&
-    Array.isArray(data.items)
-  ){
-
-    return data.items;
-
-  }
-
-
-  if(
-    data &&
-    Array.isArray(data.data)
-  ){
-
-    return data.data;
-
-  }
-
-
-  if(
-    data &&
-    Array.isArray(data.results)
-  ){
-
-    return data.results;
-
-  }
-
-
-  if(
-    data &&
-    Array.isArray(data.shorts)
-  ){
-
-    return data.shorts;
-
-  }
-
-
-  return [];
-
-}
-
-
-/* =========================================
-   CHECK SHORT
-========================================= */
+/* ==========================================================
+   SHORT DETECTION
+   ========================================================== */
 
 function isShort(item){
 
-  const type = text(
-    get(item,[
-      "type",
-      "contentType",
-      "content_type",
-      "kind"
-    ])
-  ).toLowerCase();
+    if(!item){
+        return false;
+    }
 
 
-  const url = text(
-    get(item,[
-      "url",
-      "videoUrl",
-      "video_url",
-      "link",
-      "youtubeUrl",
-      "youtube_url"
-    ])
-  ).toLowerCase();
+    /*
+       Explicit boolean fields
+    */
+
+    if(item.isShort === true){
+        return true;
+    }
+
+    if(item.is_short === true){
+        return true;
+    }
+
+    if(item.short === true){
+        return true;
+    }
 
 
-  const title =
-    getTitle(item).toLowerCase();
+    /*
+       Explicit type
+    */
+
+    const type =
+        text(
+            getValue(item,[
+                "type",
+                "contentType",
+                "content_type",
+                "kind",
+                "format"
+            ])
+        ).toLowerCase();
 
 
-  return (
-    type.includes("short") ||
-    url.includes("/shorts/") ||
-    item.isShort === true ||
-    item.short === true ||
-    title.includes("#shorts")
-  );
+    if(
+        type === "short" ||
+        type === "shorts" ||
+        type.includes("short")
+    ){
+        return true;
+    }
 
+
+    /*
+       URL
+    */
+
+    const url =
+        getUrl(item).toLowerCase();
+
+    if(url.includes("/shorts/")){
+        return true;
+    }
+
+
+    /*
+       Video ID may sometimes contain URL
+    */
+
+    const rawId =
+        text(
+            getValue(item,[
+                "videoId",
+                "youtubeId",
+                "youtube_id"
+            ])
+        ).toLowerCase();
+
+    if(rawId.includes("/shorts/")){
+        return true;
+    }
+
+
+    /*
+       Title
+    */
+
+    const title =
+        text(
+            getValue(item,[
+                "title",
+                "name"
+            ])
+        ).toLowerCase();
+
+
+    /*
+       Hashtag Shorts
+    */
+
+    if(
+        title.includes("#shorts") ||
+        title.includes("#short")
+    ){
+        return true;
+    }
+
+
+    /*
+       Description
+    */
+
+    const description =
+        text(
+            getValue(item,[
+                "description",
+                "desc",
+                "caption"
+            ])
+        ).toLowerCase();
+
+
+    if(
+        description.includes("#shorts") ||
+        description.includes("#short")
+    ){
+        return true;
+    }
+
+
+    return false;
 }
 
 
-/* =========================================
-   DATE VALUE
-========================================= */
+/* ==========================================================
+   NORMAL VIDEO DETECTION
+   ========================================================== */
 
-function dateValue(item){
+function isNormalVideo(item){
 
-  const d =
-    new Date(getDate(item));
-
-
-  return isNaN(d.getTime())
-    ? 0
-    : d.getTime();
-
+    return !isShort(item);
 }
 
 
-/* =========================================
-   REMOVE DUPLICATES
-========================================= */
+/* =========================
+   TITLE
+========================= */
 
-function unique(items){
+function getTitle(item){
 
-  const seen = new Set();
+    return text(
+        getValue(item,[
+            "title",
+            "name",
+            "videoTitle",
+            "video_title"
+        ])
+    ) || "Templewale Video";
+}
 
 
-  return items.filter(item => {
+/* =========================
+   DATE
+========================= */
+
+function getDate(item){
+
+    return text(
+        getValue(item,[
+            "published",
+            "publishedAt",
+            "published_at",
+            "date",
+            "publishedDate",
+            "uploadDate"
+        ])
+    );
+}
+
+
+/* =========================
+   DATE OBJECT
+========================= */
+
+function getDateObject(item){
+
+    const date =
+        getDate(item);
+
+    if(!date){
+        return new Date(0);
+    }
+
+    const parsed =
+        new Date(date);
+
+    if(isNaN(parsed.getTime())){
+        return new Date(0);
+    }
+
+    return parsed;
+}
+
+
+/* =========================
+   FORMAT DATE
+========================= */
+
+function formatDate(item){
+
+    const date =
+        getDateObject(item);
+
+    if(date.getTime() === 0){
+        return "";
+    }
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"numeric",
+            month:"short",
+            year:"numeric"
+        }
+    );
+}
+
+
+/* =========================
+   THUMBNAIL
+========================= */
+
+function getThumbnail(item){
+
+    let thumbnail =
+        text(
+            getValue(item,[
+                "thumbnail",
+                "thumbnailUrl",
+                "thumbnail_url",
+                "image",
+                "imageUrl",
+                "image_url"
+            ])
+        );
+
+
+    if(thumbnail){
+        return thumbnail;
+    }
+
 
     const id =
-      getVideoId(item);
+        getVideoId(item);
 
+    if(id){
 
-    if(
-      !id ||
-      seen.has(id)
-    ){
-
-      return false;
+        return
+        `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
     }
 
-
-    seen.add(id);
-
-    return true;
-
-  });
-
-}
-
-
-/* =========================================
-   NEWEST FIRST
-========================================= */
-
-function sortNewest(items){
-
-  return [...items].sort(
-    (a,b) =>
-      dateValue(b) -
-      dateValue(a)
-  );
-
-}
-
-
-/* =========================================
-   FORMAT DATE
-========================================= */
-
-function formatDate(value){
-
-  if(!value){
 
     return "";
-
-  }
-
-
-  const d =
-    new Date(value);
-
-
-  if(
-    isNaN(d.getTime())
-  ){
-
-    return value;
-
-  }
-
-
-  return d.toLocaleDateString(
-    "en-IN",
-    {
-      day:"numeric",
-      month:"short",
-      year:"numeric"
-    }
-  );
-
 }
 
 
-/* =========================================
-   CREATE VIDEO CARD
-========================================= */
+/* =========================
+   FIX THUMBNAIL
+========================= */
 
-function createCard(
-  item,
-  shortMode=false
-){
+function thumbnailFor(item){
 
-  const id =
-    getVideoId(item);
+    let custom =
+        text(
+            getValue(item,[
+                "thumbnail",
+                "thumbnailUrl",
+                "thumbnail_url",
+                "image",
+                "imageUrl",
+                "image_url"
+            ])
+        );
 
-
-  if(!id){
-
-    return null;
-
-  }
-
-
-  const title =
-    getTitle(item);
-
-
-  const date =
-    formatDate(
-      getDate(item)
-    );
-
-
-  const thumb =
-    getThumbnail(
-      item,
-      id
-    );
-
-
-  const card =
-    document.createElement("article");
-
-
-  card.className =
-    "video-card" +
-    (
-      shortMode
-        ? " short-card"
-        : ""
-    );
-
-
-  /* PLAYER */
-
-  const player =
-    document.createElement("div");
-
-
-  player.className =
-    "player";
-
-
-  /* THUMBNAIL */
-
-  const poster =
-    document.createElement("img");
-
-
-  poster.src =
-    thumb;
-
-
-  poster.alt =
-    title;
-
-
-  poster.loading =
-    "lazy";
-
-
-  poster.style.cssText =
-    `
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    cursor:pointer;
-    `;
-
-
-  /* PLAY BUTTON */
-
-  const play =
-    document.createElement("button");
-
-
-  play.type =
-    "button";
-
-
-  play.setAttribute(
-    "aria-label",
-    "Play video"
-  );
-
-
-  play.innerHTML =
-    "▶";
-
-
-  play.style.cssText =
-    `
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:68px;
-    height:68px;
-    border-radius:50%;
-    border:2px solid rgba(255,255,255,.85);
-    background:rgba(0,0,0,.72);
-    color:white;
-    font-size:25px;
-    cursor:pointer;
-    `;
-
-
-  /*
-  ========================================
-  START VIDEO INSIDE WEBSITE
-  ========================================
-  */
-
-  function playVideo(){
-
-    if(
-      player.dataset.started
-    ){
-
-      return;
-
+    if(custom){
+        return custom;
     }
 
 
-    player.dataset.started =
-      "1";
-
-
-    poster.remove();
-
-    play.remove();
-
-
-    const iframe =
-      document.createElement("iframe");
-
-
-    iframe.src =
-      `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
-
-
-    iframe.title =
-      title;
-
-
-    iframe.loading =
-      "lazy";
-
-
-    iframe.allow =
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-
-    iframe.allowFullscreen =
-      true;
-
-
-    player.appendChild(
-      iframe
-    );
-
-  }
-
-
-  poster.addEventListener(
-    "click",
-    playVideo
-  );
-
-
-  play.addEventListener(
-    "click",
-    playVideo
-  );
-
-
-  player.appendChild(
-    poster
-  );
-
-
-  player.appendChild(
-    play
-  );
-
-
-  /* CARD INFO */
-
-  const info =
-    document.createElement("div");
-
-
-  info.className =
-    "card-info";
-
-
-  const h3 =
-    document.createElement("h3");
-
-
-  h3.className =
-    "card-title";
-
-
-  h3.textContent =
-    title;
-
-
-  info.appendChild(
-    h3
-  );
-
-
-  if(date){
-
-    const small =
-      document.createElement("div");
-
-
-    small.className =
-      "card-date";
-
-
-    small.textContent =
-      date;
-
-
-    info.appendChild(
-      small
-    );
-
-  }
-
-
-  card.appendChild(
-    player
-  );
-
-
-  card.appendChild(
-    info
-  );
-
-
-  return card;
-
-}
-
-
-/* =========================================
-   RENDER
-========================================= */
-
-function render(
-  containerId,
-  items,
-  shortMode=false
-){
-
-  const box =
-    document.getElementById(
-      containerId
-    );
-
-
-  box.innerHTML =
-    "";
-
-
-  if(
-    !items.length
-  ){
-
-    const e =
-      document.createElement(
-        "div"
-      );
-
-
-    e.className =
-      "empty";
-
-
-    e.textContent =
-      shortMode
-        ? "Shorts अभी उपलब्ध नहीं हैं।"
-        : "Videos अभी उपलब्ध नहीं हैं।";
-
-
-    box.appendChild(
-      e
-    );
-
-
-    return;
-
-  }
-
-
-  items.forEach(item => {
-
-    const card =
-      createCard(
-        item,
-        shortMode
-      );
-
-
-    if(card){
-
-      box.appendChild(
-        card
-      );
-
+    const id =
+        getVideoId(item);
+
+    if(!id){
+        return "";
     }
 
-  });
 
+    /*
+       hqdefault works for normal videos.
+    */
 
-  if(
-    !box.children.length
-  ){
-
-    const e =
-      document.createElement(
-        "div"
-      );
-
-
-    e.className =
-      "empty";
-
-
-    e.textContent =
-      "Content load नहीं हो पाया।";
-
-
-    box.appendChild(
-      e
-    );
-
-  }
-
+    return "https://i.ytimg.com/vi/" +
+        encodeURIComponent(id) +
+        "/hqdefault.jpg";
 }
 
 
-/* =========================================
-   LOAD YOUTUBE JSON
-========================================= */
+/* =========================
+   NORMALIZE DATA
+========================= */
 
-async function loadContent(){
+function normalizeData(data){
 
-  try{
+    if(!data){
+        return [];
+    }
 
-    const response =
-      await fetch(
-        DATA_URL +
-        "?v=" +
-        Date.now(),
-        {
-          cache:"no-store"
+
+    /*
+       If direct array
+    */
+
+    if(Array.isArray(data)){
+        return data;
+    }
+
+
+    /*
+       Common structures
+    */
+
+    const possibleKeys = [
+        "videos",
+        "items",
+        "data",
+        "results",
+        "latestVideos",
+        "latest_videos",
+        "shorts",
+        "latestShorts",
+        "latest_shorts"
+    ];
+
+
+    for(const key of possibleKeys){
+
+        if(Array.isArray(data[key])){
+
+            return data[key];
+
         }
-      );
-
-
-    if(
-      !response.ok
-    ){
-
-      throw new Error(
-        "youtube.json not found"
-      );
 
     }
 
 
-    const raw =
-      await response.json();
+    /*
+       If object contains nested videos
+    */
+
+    if(data.data){
+
+        if(Array.isArray(data.data)){
+            return data.data;
+        }
+
+        if(typeof data.data === "object"){
+
+            for(const key of possibleKeys){
+
+                if(Array.isArray(data.data[key])){
+                    return data.data[key];
+                }
+
+            }
+
+        }
+
+    }
 
 
-    const all =
-      unique(
-        toArray(raw)
-      );
+    return [];
+}
 
 
-    const sorted =
-      sortNewest(all);
+/* ==========================================================
+   LOAD JSON
+   ========================================================== */
+
+async function loadYouTubeData(){
+
+    for(const file of DATA_FILES){
+
+        try{
+
+            const response =
+                await fetch(
+                    file + "?v=" + Date.now(),
+                    {
+                        cache:"no-store"
+                    }
+                );
 
 
-    /* VIDEOS */
-
-    const videos =
-      sorted
-      .filter(
-        item =>
-          !isShort(item)
-      )
-      .slice(
-        0,
-        VIDEO_LIMIT
-      );
+            if(!response.ok){
+                continue;
+            }
 
 
-    /* SHORTS */
-
-    const shorts =
-      sorted
-      .filter(
-        item =>
-          isShort(item)
-      )
-      .slice(
-        0,
-        SHORT_LIMIT
-      );
+            const data =
+                await response.json();
 
 
-    render(
-      "videos",
-      videos,
-      false
-    );
+            const items =
+                normalizeData(data);
 
 
-    render(
-      "shorts",
-      shorts,
-      true
-    );
+            if(items.length){
+
+                console.log(
+                    "Loaded:",
+                    file,
+                    items.length
+                );
+
+                return items;
+
+            }
+
+        }catch(error){
+
+            console.log(
+                "Could not load:",
+                file,
+                error
+            );
+
+        }
+
+    }
 
 
-  }
-  catch(error){
-
-    console.error(
-      error
-    );
+    return [];
+}
 
 
-    document.getElementById(
-      "videos"
-    ).innerHTML =
-      `
-      <div class="empty">
-        Videos load नहीं हो पाए।
-        youtube.json check करें।
-      </div>
-      `;
+/* ==========================================================
+   REMOVE DUPLICATES
+   ========================================================== */
 
+function uniqueItems(items){
 
-    document.getElementById(
-      "shorts"
-    ).innerHTML =
-      `
-      <div class="empty">
-        Shorts load नहीं हो पाए।
-        youtube.json check करें।
-      </div>
-      `;
+    const seen =
+        new Set();
 
-  }
+    return items.filter(item => {
+
+        const id =
+            getVideoId(item);
+
+        const url =
+            getUrl(item);
+
+        const title =
+            getTitle(item);
+
+        const key =
+            id ||
+            url ||
+            title;
+
+        if(!key){
+            return true;
+        }
+
+        if(seen.has(key)){
+            return false;
+        }
+
+        seen.add(key);
+
+        return true;
+
+    });
 
 }
 
 
-/* =========================================
-   FOOTER YEAR
-========================================= */
+/* ==========================================================
+   SORT NEWEST FIRST
+   ========================================================== */
 
-document.getElementById(
-  "year"
-).textContent =
-  new Date().getFullYear();
+function sortNewest(a,b){
+
+    return (
+        getDateObject(b).getTime() -
+        getDateObject(a).getTime()
+    );
+
+}
 
 
-/* =========================================
+/* ==========================================================
+   RENDER NORMAL VIDEOS
+   ========================================================== */
+
+function renderVideos(items){
+
+    /*
+       IMPORTANT:
+       Only normal videos.
+       Shorts are removed here.
+    */
+
+    let videos =
+        items.filter(
+            item => isNormalVideo(item)
+        );
+
+
+    videos =
+        uniqueItems(videos);
+
+
+    videos =
+        videos
+        .sort(sortNewest)
+        .slice(0,MAX_VIDEOS);
+
+
+    if(!videos.length){
+
+        videosContainer.innerHTML = `
+            <div class="empty">
+                अभी कोई normal video उपलब्ध नहीं है।
+            </div>
+        `;
+
+        return;
+    }
+
+
+    videosContainer.innerHTML =
+        videos.map(
+            createVideoCard
+        ).join("");
+
+}
+
+
+/* ==========================================================
+   RENDER SHORTS
+   ========================================================== */
+
+function renderShorts(items){
+
+    /*
+       IMPORTANT:
+       Only Shorts.
+    */
+
+    let shorts =
+        items.filter(
+            item => isShort(item)
+        );
+
+
+    shorts =
+        uniqueItems(shorts);
+
+
+    shorts =
+        shorts
+        .sort(sortNewest)
+        .slice(0,MAX_SHORTS);
+
+
+    if(!shorts.length){
+
+        shortsContainer.innerHTML = `
+            <div class="empty">
+                अभी कोई Short उपलब्ध नहीं है।
+            </div>
+        `;
+
+        return;
+    }
+
+
+    shortsContainer.innerHTML =
+        shorts.map(
+            createShortCard
+        ).join("");
+
+}
+
+
+/* ==========================================================
+   VIDEO CARD
+   ========================================================== */
+
+function createVideoCard(item){
+
+    const id =
+        getVideoId(item);
+
+    const title =
+        getTitle(item);
+
+    const date =
+        formatDate(item);
+
+    const thumbnail =
+        thumbnailFor(item);
+
+
+    const safeItem =
+        encodeURIComponent(
+            JSON.stringify({
+                id:id,
+                title:title,
+                short:false
+            })
+        );
+
+
+    return `
+
+        <article
+            class="video-card"
+            onclick="openPlayerFromEncoded('${safeItem}')">
+
+            <div class="thumbnail-wrap">
+
+                ${
+                    thumbnail
+                    ?
+                    `<img
+                        class="thumbnail"
+                        src="${escapeHTML(thumbnail)}"
+                        alt="${escapeHTML(title)}"
+                        loading="lazy"
+                        onerror="this.style.display='none';"
+                    >`
+                    :
+                    ""
+                }
+
+                <div class="play-button">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <div class="video-title">
+                    ${escapeHTML(title)}
+                </div>
+
+                ${
+                    date
+                    ?
+                    `<div class="video-date">
+                        ${escapeHTML(date)}
+                    </div>`
+                    :
+                    ""
+                }
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ==========================================================
+   SHORT CARD
+   ========================================================== */
+
+function createShortCard(item){
+
+    const id =
+        getVideoId(item);
+
+    const title =
+        getTitle(item);
+
+    const thumbnail =
+        thumbnailFor(item);
+
+    const safeItem =
+        encodeURIComponent(
+            JSON.stringify({
+                id:id,
+                title:title,
+                short:true
+            })
+        );
+
+
+    return `
+
+        <article
+            class="short-card"
+            onclick="openPlayerFromEncoded('${safeItem}')">
+
+            <div class="short-thumbnail">
+
+                ${
+                    thumbnail
+                    ?
+                    `<img
+                        src="${escapeHTML(thumbnail)}"
+                        alt="${escapeHTML(title)}"
+                        loading="lazy"
+                        onerror="this.style.display='none';"
+                    >`
+                    :
+                    ""
+                }
+
+                <div class="short-play">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="short-info">
+
+                <div class="short-title">
+                    ${escapeHTML(title)}
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ==========================================================
+   OPEN PLAYER
+   ========================================================== */
+
+function openPlayer(id,title,isShortVideo){
+
+    id =
+        text(id);
+
+    if(!id){
+
+        /*
+           If no ID available,
+           don't redirect automatically.
+        */
+
+        return;
+
+    }
+
+
+    playerTitle.textContent =
+        title || "Templewale";
+
+
+    playerFrame.className =
+        isShortVideo
+        ?
+        "player-frame short-player"
+        :
+        "player-frame";
+
+
+    /*
+       YouTube embedded player.
+       It stays inside this website.
+    */
+
+    playerFrame.innerHTML = `
+
+        <iframe
+
+            src="https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0"
+
+            title="${escapeHTML(title || "Templewale Video")}"
+
+            allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share
+            "
+
+            allowfullscreen>
+
+        </iframe>
+
+    `;
+
+
+    playerOverlay.classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* ==========================================================
+   OPEN FROM ENCODED DATA
+   ========================================================== */
+
+function openPlayerFromEncoded(encoded){
+
+    try{
+
+        const data =
+            JSON.parse(
+                decodeURIComponent(encoded)
+            );
+
+
+        openPlayer(
+            data.id,
+            data.title,
+            data.short === true
+        );
+
+    }catch(error){
+
+        console.log(
+            "Player error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
+   CLOSE PLAYER
+   ========================================================== */
+
+function closeVideoPlayer(){
+
+    playerOverlay.classList.remove(
+        "active"
+    );
+
+
+    playerFrame.innerHTML =
+        "";
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+closePlayer.addEventListener(
+    "click",
+    closeVideoPlayer
+);
+
+
+/* =========================
+   CLICK OUTSIDE
+========================= */
+
+playerOverlay.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target ===
+            playerOverlay
+        ){
+
+            closeVideoPlayer();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape" &&
+            playerOverlay.classList.contains(
+                "active"
+            )
+        ){
+
+            closeVideoPlayer();
+
+        }
+
+    }
+);
+
+
+/* ==========================================================
    START
-========================================= */
+   ========================================================== */
 
-loadContent();
+async function startWebsite(){
+
+    const items =
+        await loadYouTubeData();
+
+
+    if(!items.length){
+
+        videosContainer.innerHTML = `
+            <div class="empty">
+                Videos data load नहीं हो पाया।
+            </div>
+        `;
+
+
+        shortsContainer.innerHTML = `
+            <div class="empty">
+                Shorts data load नहीं हो पाया।
+            </div>
+        `;
+
+
+        return;
+    }
+
+
+    /*
+       VERY IMPORTANT
+
+       Same source data is divided into
+       two completely separate sections.
+
+       NORMAL VIDEOS:
+       !isShort(item)
+
+       SHORTS:
+       isShort(item)
+    */
+
+    renderVideos(items);
+
+    renderShorts(items);
+
+}
+
+
+/* =========================
+   RUN
+========================= */
+
+startWebsite();
 
 </script>
 
