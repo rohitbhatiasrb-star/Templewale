@@ -9,4 +9,183 @@
 <section id="dharma"><div class="panel"><h2>Know Your Dharma</h2><p class="intro">Sanatan Dharma, Karma, आत्मा, सत्य, अहिंसा, गुरु, माता-पिता और नारी सम्मान जैसे विषयों पर सरल और meaningful stories.</p><a class="watch" href="https://www.youtube.com/@templewale" target="_blank">Explore Dharma on YouTube →</a></div></section>
 <section id="about"><div class="about"><div class="panel"><h2>About Templewale</h2><p>Templewale भारत के मंदिरों, आध्यात्मिक परंपराओं, यात्राओं और Sanatan Dharma की कहानियों को cinematic तरीके से प्रस्तुत करता है.</p><p class="meta">Website content is automatically refreshed from the Templewale YouTube channel through a scheduled GitHub Actions workflow.</p></div><div class="panel"><h3 style="color:var(--gold);margin-top:0">Stay Connected</h3><p class="meta">YouTube • Instagram • Travel • Dharma</p><a class="btn" href="https://www.youtube.com/@templewale" target="_blank">Subscribe on YouTube</a></div></div></section>
 <footer class="footer">© Templewale • Hidden Mysteries of Sanatan Dharma</footer>
-<script>async function loadContent(){const ev=document.getElementById('videoEmpty'),es=document.getElementById('shortEmpty');try{const r=await fetch('./data/videos.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('missing');const d=await r.json(),v=d.videos||[],s=d.shorts||[];document.getElementById('videoGrid').innerHTML=v.map(x=>`<article class="card"><a href="https://www.youtube.com/watch?v=${x.id}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="${x.thumbnail}" alt="${esc(x.title)}"><div class="cardbody"><h3>${esc(x.title)}</h3><div class="meta">${x.published||''}</div><span class="watch">Watch video →</span></div></a></article>`).join('');document.getElementById('shortGrid').innerHTML=s.map(x=>`<article class="card short"><a href="https://www.youtube.com/shorts/${x.id}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="${x.thumbnail}" alt="${esc(x.title)}"><div class="cardbody"><span class="badge">SHORT</span><h3>${esc(x.title)}</h3><div class="meta">${x.published||''}</div></div></a></article>`).join('');ev.style.display=v.length?'none':'block';es.style.display=s.length?'none':'block'}catch(e){ev.textContent='YouTube content पहली GitHub Action run के बाद यहां दिखेगा.';es.textContent='Shorts भी automatic update होंगे.'}}function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}loadContent();</script></body></html>
+<<script>
+async function loadContent() {
+
+  const videoGrid = document.getElementById("videoGrid");
+  const shortGrid = document.getElementById("shortGrid");
+  const videoEmpty = document.getElementById("videoEmpty");
+  const shortEmpty = document.getElementById("shortEmpty");
+
+  try {
+
+    const API =
+      "https://raw.githubusercontent.com/rohitbhatiasrb-star/Templewale/main/data/videos.json";
+
+    const response = await fetch(API + "?t=" + Date.now(), {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("JSON fetch failed: " + response.status);
+    }
+
+    const data = await response.json();
+
+    const videos = data.videos || [];
+    const shorts = data.shorts || [];
+
+    /* =========================
+       LATEST VIDEOS
+    ========================= */
+
+    videoGrid.innerHTML = videos.map(video => `
+      <article class="card">
+
+        <a href="https://www.youtube.com/watch?v=${video.id}"
+           target="_blank"
+           rel="noopener">
+
+          <img
+            class="thumb"
+            loading="lazy"
+            src="${video.thumbnail}"
+            alt="${esc(video.title)}"
+          >
+
+          <div class="cardbody">
+
+            <h3>${esc(video.title)}</h3>
+
+            <div class="meta">
+              ${formatDate(video.published)}
+            </div>
+
+            <span class="watch">
+              Watch video →
+            </span>
+
+          </div>
+
+        </a>
+
+      </article>
+    `).join("");
+
+    /* =========================
+       LATEST SHORTS
+    ========================= */
+
+    shortGrid.innerHTML = shorts.map(video => `
+      <article class="card short">
+
+        <a href="https://www.youtube.com/shorts/${video.id}"
+           target="_blank"
+           rel="noopener">
+
+          <img
+            class="thumb"
+            loading="lazy"
+            src="${video.thumbnail}"
+            alt="${esc(video.title)}"
+          >
+
+          <div class="cardbody">
+
+            <span class="badge">
+              SHORT
+            </span>
+
+            <h3>
+              ${esc(video.title)}
+            </h3>
+
+            <div class="meta">
+              ${formatDate(video.published)}
+            </div>
+
+          </div>
+
+        </a>
+
+      </article>
+    `).join("");
+
+    videoEmpty.style.display =
+      videos.length ? "none" : "block";
+
+    shortEmpty.style.display =
+      shorts.length ? "none" : "block";
+
+    console.log(
+      "Templewale loaded:",
+      videos.length,
+      "videos",
+      shorts.length,
+      "shorts"
+    );
+
+  } catch (error) {
+
+    console.error("Templewale content error:", error);
+
+    videoEmpty.textContent =
+      "YouTube videos load नहीं हो पाए।";
+
+    shortEmpty.textContent =
+      "YouTube Shorts load नहीं हो पाए।";
+
+  }
+}
+
+
+/* =========================
+   DATE FORMAT
+========================= */
+
+function formatDate(date) {
+
+  if (!date) return "";
+
+  return new Date(date).toLocaleDateString(
+    "en-IN",
+    {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    }
+  );
+}
+
+
+/* =========================
+   HTML ESCAPE
+========================= */
+
+function esc(value) {
+
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    function (char) {
+
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char];
+
+    }
+  );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadContent();
+
+      </script>
