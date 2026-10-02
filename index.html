@@ -883,310 +883,16 @@ h2{
 
 <script>
 
-/* ==========================================
-   LOAD CONTENT FROM data/videos.json
-========================================== */
-
-async function loadContent(){
-
-  const videoGrid = document.getElementById("videoGrid");
-  const shortGrid = document.getElementById("shortGrid");
-
-  const videoEmpty = document.getElementById("videoEmpty");
-  const shortEmpty = document.getElementById("shortEmpty");
-
-  try{
-
-    const response = await fetch(
-      "./data/videos.json?version=" + Date.now(),
-      {
-        cache:"no-store"
-      }
-    );
-
-    if(!response.ok){
-      throw new Error("videos.json not found");
-    }
-
-    const data = await response.json();
-
-    const videos = Array.isArray(data.videos)
-      ? data.videos
-      : [];
-
-    const shorts = Array.isArray(data.shorts)
-      ? data.shorts
-      : [];
-
-
-    /* ===============================
-       VIDEOS
-    =============================== */
-
-    videoGrid.innerHTML = "";
-
-    videos.forEach(function(video){
-
-      const card = document.createElement("article");
-
-      card.className = "card";
-
-      card.innerHTML = `
-        <img
-          class="thumb"
-          loading="lazy"
-          src="${safe(video.thumbnail)}"
-          alt=""
-        >
-
-        <div class="card-body">
-
-          <div class="card-title">
-            ${safe(video.title)}
-          </div>
-
-          <div class="meta">
-            ${safe(video.published || "")}
-          </div>
-
-          <span class="watch">
-            Watch video →
-          </span>
-
-        </div>
-      `;
-
-      card.addEventListener("click",function(){
-
-        openVideo(
-          video.id,
-          video.title,
-          video.published || ""
-        );
-
-      });
-
-      videoGrid.appendChild(card);
-
-    });
-
-
-    /* ===============================
-       SHORTS
-    =============================== */
-
-    shortGrid.innerHTML = "";
-
-    shorts.forEach(function(short){
-
-      const card = document.createElement("article");
-
-      card.className = "card short";
-
-      card.innerHTML = `
-        <img
-          class="thumb"
-          loading="lazy"
-          src="${safe(short.thumbnail)}"
-          alt=""
-        >
-
-        <div class="card-body">
-
-          <span class="badge">
-            SHORT
-          </span>
-
-          <div class="card-title">
-            ${safe(short.title)}
-          </div>
-
-          <div class="meta">
-            ${safe(short.published || "")}
-          </div>
-
-        </div>
-      `;
-
-      card.addEventListener("click",function(){
-
-        openShort(
-          short.id,
-          short.title,
-          short.published || ""
-        );
-
-      });
-
-      shortGrid.appendChild(card);
-
-    });
-
-
-    videoEmpty.style.display =
-      videos.length > 0 ? "none" : "block";
-
-    shortEmpty.style.display =
-      shorts.length > 0 ? "none" : "block";
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    videoEmpty.textContent =
-      "Videos load नहीं हो पाए. data/videos.json check करें.";
-
-    shortEmpty.textContent =
-      "Shorts load नहीं हो पाए. data/videos.json check करें.";
-
-  }
-
-}
-
-
-/* ==========================================
-   SAFE TEXT
-========================================== */
-
-function safe(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ==========================================
-   VIDEO
-========================================== */
-
-function openVideo(id,title,date){
-
-  if(!id) return;
-
-  document.getElementById("videoFrame").src =
-    "https://www.youtube.com/embed/" +
-    encodeURIComponent(id) +
-    "?autoplay=1&rel=0";
-
-  document.getElementById("videoTitle").textContent =
-    title || "Templewale";
-
-  document.getElementById("videoDate").textContent =
-    date || "";
-
-  document.getElementById("videoModal")
-    .classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-}
-
-
-function closeVideo(){
-
-  document.getElementById("videoFrame").src = "";
-
-  document.getElementById("videoModal")
-    .classList.remove("show");
-
-  document.body.style.overflow = "";
-
-}
-
-
-/* ==========================================
-   SHORT
-========================================== */
-
-function openShort(id,title,date){
-
-  if(!id) return;
-
-  document.getElementById("shortFrame").src =
-    "https://www.youtube.com/embed/" +
-    encodeURIComponent(id) +
-    "?autoplay=1&rel=0";
-
-  document.getElementById("shortTitle").textContent =
-    title || "Templewale Short";
-
-  document.getElementById("shortDate").textContent =
-    date || "";
-
-  document.getElementById("shortModal")
-    .classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-}
-
-
-function closeShort(){
-
-  document.getElementById("shortFrame").src = "";
-
-  document.getElementById("shortModal")
-    .classList.remove("show");
-
-  document.body.style.overflow = "";
-
-}
-
-
-/* ==========================================
-   TEMPLE
-========================================== */
-
-function openTemple(name,location){
-
-  document.getElementById("templeName").textContent =
-    name;
-
-  document.getElementById("templeLocation").textContent =
-    location;
-
-  document.getElementById("templeModal")
-    .classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-}
-
-
-function closeTemple(){
-
-  document.getElementById("templeModal")
-    .classList.remove("show");
-
-  document.body.style.overflow = "";
-
-}
-
-
-/* ==========================================
-   OUTSIDE CLICK
-========================================== */
-
-function outsideClose(event,id){
-
-  if(event.target.id === id){
-<script>
-
 /* =========================================
    HELPERS
 ========================================= */
 
 function esc(value){
+
   return String(value ?? '').replace(
     /[&<>"']/g,
     function(match){
+
       return {
         '&':'&amp;',
         '<':'&lt;',
@@ -1194,8 +900,10 @@ function esc(value){
         '"':'&quot;',
         "'":'&#039;'
       }[match];
+
     }
   );
+
 }
 
 
@@ -1209,8 +917,8 @@ function formatDate(value){
 
   const date = new Date(value);
 
-  if(Number.isNaN(date.getTime())){
-    return String(value);
+  if(isNaN(date.getTime())){
+    return value;
   }
 
   return date.toLocaleDateString('en-IN',{
@@ -1218,6 +926,7 @@ function formatDate(value){
     month:'short',
     year:'numeric'
   });
+
 }
 
 
@@ -1227,26 +936,18 @@ function formatDate(value){
 
 function sortNewest(items){
 
-  return items
-    .slice()
-    .sort(function(a,b){
+  return items.sort(function(a,b){
 
-      const dateA = new Date(
-        a.published ||
-        a.publishedAt ||
-        a.date ||
-        0
-      ).getTime();
+    const dateA =
+      new Date(a.published || 0).getTime();
 
-      const dateB = new Date(
-        b.published ||
-        b.publishedAt ||
-        b.date ||
-        0
-      ).getTime();
+    const dateB =
+      new Date(b.published || 0).getTime();
 
-      return dateB - dateA;
-    });
+    return dateB - dateA;
+
+  });
+
 }
 
 
@@ -1262,12 +963,6 @@ async function loadContent(){
   const shortEmpty =
     document.getElementById('shortEmpty');
 
-  const videoGrid =
-    document.getElementById('videoGrid');
-
-  const shortGrid =
-    document.getElementById('shortGrid');
-
   try{
 
     const response =
@@ -1279,10 +974,7 @@ async function loadContent(){
       );
 
     if(!response.ok){
-      throw new Error(
-        'videos.json not found: ' +
-        response.status
-      );
+      throw new Error('videos.json not found');
     }
 
     const data =
@@ -1299,75 +991,46 @@ async function loadContent(){
       : [];
 
 
-    /* NEWEST FIRST */
+    /* =====================================
+       ONLY CHANGE:
+       NEWEST CONTENT FIRST
+    ===================================== */
 
     videos = sortNewest(videos);
     shorts = sortNewest(shorts);
 
 
-    /* ONLY LATEST */
+    /* VIDEOS */
 
-    videos = videos.slice(0,6);
-    shorts = shorts.slice(0,8);
-
-
-    /* =====================================
-       VIDEOS
-    ===================================== */
+    const videoGrid =
+      document.getElementById('videoGrid');
 
     videoGrid.innerHTML =
       videos.map(function(video){
-
-        const id =
-          video.id ||
-          video.videoId ||
-          '';
-
-        const title =
-          video.title ||
-          'Templewale Video';
-
-        const date =
-          formatDate(
-            video.published ||
-            video.publishedAt ||
-            video.date ||
-            ''
-          );
-
-        const thumbnail =
-          video.thumbnail ||
-          (
-            id
-            ? 'https://i.ytimg.com/vi/' +
-              encodeURIComponent(id) +
-              '/hqdefault.jpg'
-            : ''
-          );
 
         return `
           <article
             class="card"
             onclick="openVideo(
-              '${esc(id)}',
-              '${esc(title)}',
-              '${esc(date)}'
+              '${esc(video.id)}',
+              '${esc(video.title)}',
+              '${esc(video.published || '')}'
             )">
 
             <img
               class="thumb"
               loading="lazy"
-              src="${esc(thumbnail)}"
-              alt="${esc(title)}">
+              src="${esc(video.thumbnail)}"
+              alt="${esc(video.title)}">
 
             <div class="cardbody">
 
               <h3>
-                ${esc(title)}
+                ${esc(video.title)}
               </h3>
 
               <div class="meta">
-                ${esc(date)}
+                ${formatDate(video.published || '')}
               </div>
 
               <span class="watch">
@@ -1382,54 +1045,28 @@ async function loadContent(){
       }).join('');
 
 
-    /* =====================================
-       SHORTS
-    ===================================== */
+    /* SHORTS */
+
+    const shortGrid =
+      document.getElementById('shortGrid');
 
     shortGrid.innerHTML =
       shorts.map(function(short){
-
-        const id =
-          short.id ||
-          short.videoId ||
-          '';
-
-        const title =
-          short.title ||
-          'Templewale Short';
-
-        const date =
-          formatDate(
-            short.published ||
-            short.publishedAt ||
-            short.date ||
-            ''
-          );
-
-        const thumbnail =
-          short.thumbnail ||
-          (
-            id
-            ? 'https://i.ytimg.com/vi/' +
-              encodeURIComponent(id) +
-              '/hqdefault.jpg'
-            : ''
-          );
 
         return `
           <article
             class="card short"
             onclick="openShort(
-              '${esc(id)}',
-              '${esc(title)}',
-              '${esc(date)}'
+              '${esc(short.id)}',
+              '${esc(short.title)}',
+              '${esc(short.published || '')}'
             )">
 
             <img
               class="thumb"
               loading="lazy"
-              src="${esc(thumbnail)}"
-              alt="${esc(title)}">
+              src="${esc(short.thumbnail)}"
+              alt="${esc(short.title)}">
 
             <div class="cardbody">
 
@@ -1438,11 +1075,11 @@ async function loadContent(){
               </span>
 
               <h3>
-                ${esc(title)}
+                ${esc(short.title)}
               </h3>
 
               <div class="meta">
-                ${esc(date)}
+                ${formatDate(short.published || '')}
               </div>
 
             </div>
@@ -1467,17 +1104,11 @@ async function loadContent(){
       error
     );
 
-    videoGrid.innerHTML = '';
-    shortGrid.innerHTML = '';
-
-    videoEmpty.style.display = 'block';
-    shortEmpty.style.display = 'block';
-
     videoEmpty.textContent =
-      'YouTube videos load नहीं हो पाए. कृपया थोड़ी देर बाद refresh करें.';
+      'YouTube content load नहीं हो पाया. GitHub Action के बाद फिर refresh करें.';
 
     shortEmpty.textContent =
-      'YouTube Shorts load नहीं हो पाए. कृपया थोड़ी देर बाद refresh करें.';
+      'Shorts load नहीं हो पाए. GitHub Action के बाद फिर refresh करें.';
 
   }
 
@@ -1492,20 +1123,29 @@ function openVideo(id,title,date){
 
   if(!id) return;
 
-  document.getElementById('videoFrame').src =
+  document.getElementById(
+    'videoFrame'
+  ).src =
     'https://www.youtube.com/embed/' +
     encodeURIComponent(id) +
     '?autoplay=1&rel=0';
 
-  document.getElementById('modalVideoTitle').textContent =
+  document.getElementById(
+    'modalVideoTitle'
+  ).textContent =
     title;
 
-  document.getElementById('modalVideoDate').textContent =
-    date;
+  document.getElementById(
+    'modalVideoDate'
+  ).textContent =
+    formatDate(date);
 
-  document.getElementById('videoModal').classList.add('show');
+  document.getElementById(
+    'videoModal'
+  ).classList.add('show');
 
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
+
 }
 
 
@@ -1517,20 +1157,29 @@ function openShort(id,title,date){
 
   if(!id) return;
 
-  document.getElementById('shortFrame').src =
+  document.getElementById(
+    'shortFrame'
+  ).src =
     'https://www.youtube.com/embed/' +
     encodeURIComponent(id) +
     '?autoplay=1&rel=0';
 
-  document.getElementById('modalShortTitle').textContent =
+  document.getElementById(
+    'modalShortTitle'
+  ).textContent =
     title;
 
-  document.getElementById('modalShortDate').textContent =
-    date;
+  document.getElementById(
+    'modalShortDate'
+  ).textContent =
+    formatDate(date);
 
-  document.getElementById('shortModal').classList.add('show');
+  document.getElementById(
+    'shortModal'
+  ).classList.add('show');
 
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
+
 }
 
 
@@ -1540,15 +1189,22 @@ function openShort(id,title,date){
 
 function openTemple(name,location){
 
-  document.getElementById('modalTempleName').textContent =
+  document.getElementById(
+    'modalTempleName'
+  ).textContent =
     name;
 
-  document.getElementById('modalTempleLocation').textContent =
+  document.getElementById(
+    'modalTempleLocation'
+  ).textContent =
     location;
 
-  document.getElementById('templeModal').classList.add('show');
+  document.getElementById(
+    'templeModal'
+  ).classList.add('show');
 
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
+
 }
 
 
@@ -1558,35 +1214,46 @@ function openTemple(name,location){
 
 function closeVideoModal(){
 
-  document.getElementById('videoFrame').src = '';
+  document.getElementById(
+    'videoFrame'
+  ).src='';
 
-  document.getElementById('videoModal').classList.remove('show');
+  document.getElementById(
+    'videoModal'
+  ).classList.remove('show');
 
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
+
 }
 
 
 function closeShortModal(){
 
-  document.getElementById('shortFrame').src = '';
+  document.getElementById(
+    'shortFrame'
+  ).src='';
 
-  document.getElementById('shortModal').classList.remove('show');
+  document.getElementById(
+    'shortModal'
+  ).classList.remove('show');
 
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
+
 }
 
 
 function closeTempleModal(){
 
-  document.getElementById('templeModal').classList.remove('show');
+  document.getElementById(
+    'templeModal'
+  ).classList.remove('show');
 
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
+
 }
 
 
-/* =========================================
-   CLOSE OUTSIDE MODAL
-========================================= */
+/* Click outside modal = close */
 
 function closeModal(event){
 
@@ -1601,9 +1268,7 @@ function closeModal(event){
 }
 
 
-/* =========================================
-   ESC KEY
-========================================= */
+/* ESC key */
 
 document.addEventListener(
   'keydown',
@@ -1621,13 +1286,13 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   START
-========================================= */
+/* START */
 
 loadContent();
 
 </script>
 
+            
+             
 </body>
 </html>
