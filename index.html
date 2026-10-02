@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,10 +30,7 @@ body{
     overflow-x:hidden;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     width:100%;
@@ -66,10 +62,7 @@ header{
     color:#e99a2f;
 }
 
-
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
     width:100%;
@@ -79,10 +72,6 @@ main{
     max-width:1400px;
     margin:auto;
     padding:85px 42px;
-}
-
-.section.dark{
-    background:#080706;
 }
 
 .section-title{
@@ -110,14 +99,7 @@ main{
     margin-bottom:42px;
 }
 
-.youtube-link:hover{
-    color:#ffbd59;
-}
-
-
-/* =========================
-   VIDEO GRID
-========================= */
+/* VIDEO GRID */
 
 .video-grid{
     display:grid;
@@ -131,10 +113,7 @@ main{
     border-radius:30px;
     overflow:hidden;
     cursor:pointer;
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+    transition:.25s ease;
 }
 
 .video-card:hover{
@@ -174,8 +153,9 @@ main{
     color:white;
     font-size:30px;
     padding-left:5px;
-    backdrop-filter:blur(5px);
 }
+
+/* VIDEO INFO */
 
 .video-info{
     padding:26px 28px 30px;
@@ -194,10 +174,7 @@ main{
     color:#bcae9e;
 }
 
-
-/* =========================
-   SHORTS
-========================= */
+/* SHORTS */
 
 .shorts-section{
     background:#080706;
@@ -235,6 +212,7 @@ main{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
 }
 
 .short-play{
@@ -264,10 +242,7 @@ main{
     font-weight:700;
 }
 
-
-/* =========================
-   LOADING
-========================= */
+/* LOADING */
 
 .loading{
     min-height:190px;
@@ -290,10 +265,7 @@ main{
     font-size:20px;
 }
 
-
-/* =========================
-   PLAYER MODAL
-========================= */
+/* PLAYER */
 
 .player-overlay{
     position:fixed;
@@ -361,19 +333,13 @@ main{
     border:0;
 }
 
-
-/* SHORT PLAYER */
-
 .player-frame.short-player{
     width:min(430px,100%);
     aspect-ratio:9/16;
     margin:auto;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     border-top:1px solid rgba(223,155,54,.25);
@@ -393,10 +359,7 @@ footer{
     font-size:15px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -428,9 +391,7 @@ footer{
         grid-template-columns:repeat(2,1fr);
         gap:18px;
     }
-
 }
-
 
 @media(max-width:600px){
 
@@ -448,7 +409,6 @@ footer{
 
     .section-title{
         font-size:48px;
-        letter-spacing:-1.5px;
     }
 
     .section-description{
@@ -460,24 +420,14 @@ footer{
         font-size:21px;
     }
 
-    .video-card{
-        border-radius:28px;
-    }
-
     .video-title{
         font-size:25px;
-    }
-
-    .shorts-grid{
-        grid-template-columns:repeat(2,1fr);
     }
 
     .short-title{
         font-size:17px;
     }
-
 }
-
 
 @media(max-width:420px){
 
@@ -520,19 +470,12 @@ footer{
     .short-title{
         font-size:15px;
     }
-
 }
 
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -547,15 +490,13 @@ footer{
 </header>
 
 
-
 <main>
 
-
 <!-- =========================
-     LATEST VIDEOS
+     LATEST NORMAL VIDEOS
 ========================= -->
 
-<section class="section dark">
+<section class="section">
 
 <h1 class="section-title">
 Latest Videos
@@ -571,11 +512,8 @@ class="youtube-link"
 href="https://www.youtube.com/@templewale"
 target="_blank"
 rel="noopener">
-
 View on YouTube →
-
 </a>
-
 
 <div
 id="videosContainer"
@@ -588,7 +526,6 @@ Videos load हो रहे हैं...
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -611,11 +548,8 @@ class="youtube-link"
 href="https://www.youtube.com/@templewale/shorts"
 target="_blank"
 rel="noopener">
-
 View All Shorts →
-
 </a>
-
 
 <div
 id="shortsContainer"
@@ -629,14 +563,10 @@ Shorts load हो रहे हैं...
 
 </section>
 
-
 </main>
 
 
-
-<!-- =========================
-     PLAYER
-========================= -->
+<!-- PLAYER -->
 
 <div
 id="playerOverlay"
@@ -649,68 +579,45 @@ class="player-overlay">
 <div
 id="playerTitle"
 class="player-title">
-
 Templewale
-
 </div>
 
 <button
 id="closePlayer"
-class="close-player"
-aria-label="Close">
-
+class="close-player">
 ×
-
 </button>
 
 </div>
 
-
 <div
 id="playerFrame"
 class="player-frame">
-
 </div>
 
 </div>
 
 </div>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
 <div class="footer-logo">
-
 <span class="logo-white">TEMPLE</span><span class="logo-gold">WALE</span>
-
 </div>
 
 <div class="footer-text">
-
 Hidden Mysteries of Sanatan Dharma
-
 </div>
 
 </footer>
 
 
-
 <script>
 
-/* ==========================================================
-   TEMPLEWALE
-   VIDEO + SHORTS SYSTEM
-========================================================== */
-
-
-/* =========================
+/* =========================================================
    CONFIG
-========================= */
+========================================================= */
 
 const DATA_FILES = [
     "youtube.json",
@@ -723,9 +630,9 @@ const MAX_VIDEOS = 10;
 const MAX_SHORTS = 10;
 
 
-/* =========================
+/* =========================================================
    DOM
-========================= */
+========================================================= */
 
 const videosContainer =
     document.getElementById("videosContainer");
@@ -746,21 +653,17 @@ const closePlayer =
     document.getElementById("closePlayer");
 
 
-/* ==========================================================
-   BASIC HELPERS
-========================================================== */
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function text(value){
 
-    if(
-        value === null ||
-        value === undefined
-    ){
+    if(value === null || value === undefined){
         return "";
     }
 
     return String(value).trim();
-
 }
 
 
@@ -772,23 +675,15 @@ function escapeHTML(value){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 
-/* ==========================================================
-   GET VALUE
-========================================================== */
-
 function getValue(item,keys){
-
-    if(!item){
-        return "";
-    }
 
     for(const key of keys){
 
         if(
+            item &&
             item[key] !== undefined &&
             item[key] !== null &&
             text(item[key]) !== ""
@@ -805,30 +700,21 @@ function getValue(item,keys){
 }
 
 
-/* ==========================================================
-   VIDEO ID
-========================================================== */
+/* =========================================================
+   ID
+========================================================= */
 
 function getVideoId(item){
 
-    if(!item){
-        return "";
-    }
-
     let id =
-        getValue(item,[
-            "videoId",
-            "youtubeId",
-            "youtube_id",
-            "id"
-        ]);
-
-    id = text(id);
-
-
-    /*
-       If ID contains YouTube URL
-    */
+        text(
+            getValue(item,[
+                "videoId",
+                "youtubeId",
+                "youtube_id",
+                "id"
+            ])
+        );
 
     if(
         id.includes("youtube.com") ||
@@ -844,94 +730,62 @@ function getVideoId(item){
 
     }
 
-
     return id;
-
 }
 
 
-/* ==========================================================
-   EXTRACT YOUTUBE ID
-========================================================== */
-
 function extractVideoId(value){
 
-    const url =
-        text(value);
+    const url = text(value);
 
     if(!url){
         return "";
     }
 
-
-    try{
-
-        /* Shorts URL */
-
-        let match =
-            url.match(
-                /youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/
-            );
-
-        if(match){
-            return match[1];
-        }
-
-
-        /* Watch URL */
-
-        match =
-            url.match(
-                /[?&]v=([a-zA-Z0-9_-]{6,})/
-            );
-
-        if(match){
-            return match[1];
-        }
-
-
-        /* youtu.be */
-
-        match =
-            url.match(
-                /youtu\.be\/([a-zA-Z0-9_-]{6,})/
-            );
-
-        if(match){
-            return match[1];
-        }
-
-
-        /* Embed */
-
-        match =
-            url.match(
-                /youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/
-            );
-
-        if(match){
-            return match[1];
-        }
-
-    }
-    catch(error){
-
-        console.log(
-            "URL parsing error:",
-            error
+    let match =
+        url.match(
+            /youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/
         );
 
+    if(match){
+        return match[1];
     }
 
+    match =
+        url.match(
+            /[?&]v=([a-zA-Z0-9_-]{6,})/
+        );
+
+    if(match){
+        return match[1];
+    }
+
+    match =
+        url.match(
+            /youtu\.be\/([a-zA-Z0-9_-]{6,})/
+        );
+
+    if(match){
+        return match[1];
+    }
+
+    match =
+        url.match(
+            /youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/
+        );
+
+    if(match){
+        return match[1];
+    }
 
     return "";
 
 }
 
 
-/* ==========================================================
-   GET URL
-========================================================== */
+/* =========================================================
+   URL
+========================================================= */
 
 function getUrl(item){
 
@@ -942,243 +796,16 @@ function getUrl(item){
             "youtubeUrl",
             "youtube_url",
             "videoUrl",
-            "video_url",
-            "sourceUrl",
-            "source_url"
+            "video_url"
         ])
     );
 
 }
 
 
-/* ==========================================================
-   SHORT DETECTION
-   STRONG VERSION
-========================================================== */
-
-function isShort(item){
-
-    if(!item){
-        return false;
-    }
-
-
-    /* ---------------------------------
-       1. Explicit boolean
-    --------------------------------- */
-
-    if(
-        item.isShort === true ||
-        item.is_short === true ||
-        item.short === true ||
-        item.isShorts === true ||
-        item.is_shorts === true
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       2. Explicit string
-    --------------------------------- */
-
-    const explicit =
-        text(
-            getValue(item,[
-                "isShort",
-                "is_short",
-                "short",
-                "isShorts",
-                "is_shorts"
-            ])
-        ).toLowerCase();
-
-
-    if(
-        explicit === "true" ||
-        explicit === "yes" ||
-        explicit === "short" ||
-        explicit === "shorts"
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       3. Type
-    --------------------------------- */
-
-    const type =
-        text(
-            getValue(item,[
-                "type",
-                "contentType",
-                "content_type",
-                "kind",
-                "format",
-                "videoType",
-                "video_type"
-            ])
-        ).toLowerCase();
-
-
-    if(
-        type === "short" ||
-        type === "shorts" ||
-        type.includes("short")
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       4. URL
-    --------------------------------- */
-
-    const url =
-        getUrl(item).toLowerCase();
-
-
-    if(
-        url.includes("/shorts/") ||
-        url.includes("youtube.com/shorts")
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       5. Raw video ID field
-    --------------------------------- */
-
-    const rawId =
-        text(
-            getValue(item,[
-                "videoId",
-                "youtubeId",
-                "youtube_id"
-            ])
-        ).toLowerCase();
-
-
-    if(
-        rawId.includes("/shorts/") ||
-        rawId.includes("youtube.com/shorts")
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       6. Title
-    --------------------------------- */
-
-    const title =
-        text(
-            getValue(item,[
-                "title",
-                "name",
-                "videoTitle",
-                "video_title"
-            ])
-        ).toLowerCase();
-
-
-    if(
-        title.includes("#shorts") ||
-        title.includes("#short")
-    ){
-
-        return true;
-
-    }
-
-
-    /* ---------------------------------
-       7. Description
-    --------------------------------- */
-
-    const description =
-        text(
-            getValue(item,[
-                "description",
-                "desc",
-                "caption"
-            ])
-        ).toLowerCase();
-
-
-    if(
-        description.includes("#shorts") ||
-        description.includes("#short")
-    ){
-
-        return true;
-
-    }
-
-
-    /*
-       ---------------------------------
-       8. Shorts URL anywhere in object
-
-       This is useful if JSON contains
-       a nested YouTube URL.
-       ---------------------------------
-    */
-
-    try{
-
-        const json =
-            JSON.stringify(item)
-                .toLowerCase();
-
-        if(
-            json.includes("youtube.com/shorts/") ||
-            json.includes("/shorts/")
-        ){
-
-            return true;
-
-        }
-
-    }
-    catch(error){
-
-        console.log(error);
-
-    }
-
-
-    return false;
-
-}
-
-
-/* ==========================================================
-   NORMAL VIDEO
-========================================================== */
-
-function isNormalVideo(item){
-
-    return !isShort(item);
-
-}
-
-
-/* ==========================================================
+/* =========================================================
    TITLE
-========================================================== */
+========================================================= */
 
 function getTitle(item){
 
@@ -1194,9 +821,9 @@ function getTitle(item){
 }
 
 
-/* ==========================================================
+/* =========================================================
    DATE
-========================================================== */
+========================================================= */
 
 function getDate(item){
 
@@ -1207,60 +834,39 @@ function getDate(item){
             "published_at",
             "date",
             "publishedDate",
-            "uploadDate",
-            "upload_date"
+            "uploadDate"
         ])
     );
 
 }
 
 
-/* ==========================================================
-   DATE OBJECT
-========================================================== */
-
 function getDateObject(item){
 
-    const date =
+    const value =
         getDate(item);
 
-    if(!date){
+    if(!value){
         return new Date(0);
     }
 
-    const parsed =
-        new Date(date);
+    const date =
+        new Date(value);
 
-    if(
-        isNaN(
-            parsed.getTime()
-        )
-    ){
-
-        return new Date(0);
-
-    }
-
-    return parsed;
+    return isNaN(date.getTime())
+        ? new Date(0)
+        : date;
 
 }
 
-
-/* ==========================================================
-   FORMAT DATE
-========================================================== */
 
 function formatDate(item){
 
     const date =
         getDateObject(item);
 
-    if(
-        date.getTime() === 0
-    ){
-
+    if(date.getTime() === 0){
         return "";
-
     }
 
     return date.toLocaleDateString(
@@ -1275,9 +881,9 @@ function formatDate(item){
 }
 
 
-/* ==========================================================
+/* =========================================================
    THUMBNAIL
-========================================================== */
+========================================================= */
 
 function thumbnailFor(item){
 
@@ -1293,33 +899,415 @@ function thumbnailFor(item){
             ])
         );
 
-
     if(custom){
         return custom;
     }
 
-
     const id =
         getVideoId(item);
-
 
     if(!id){
         return "";
     }
 
-
-    return (
-        "https://i.ytimg.com/vi/" +
+    return "https://i.ytimg.com/vi/" +
         encodeURIComponent(id) +
-        "/hqdefault.jpg"
-    );
+        "/hqdefault.jpg";
 
 }
 
 
-/* ==========================================================
-   NORMALIZE DATA
-========================================================== */
+/* =========================================================
+   EXPLICIT SHORT CHECK
+========================================================= */
+
+function explicitShort(item){
+
+    if(!item){
+        return false;
+    }
+
+    /* Boolean */
+
+    if(
+        item.isShort === true ||
+        item.is_short === true ||
+        item.short === true
+    ){
+        return true;
+    }
+
+
+    /* Type */
+
+    const type =
+        text(
+            getValue(item,[
+                "type",
+                "contentType",
+                "content_type",
+                "kind",
+                "format"
+            ])
+        ).toLowerCase();
+
+    if(
+        type === "short" ||
+        type === "shorts" ||
+        type.includes("short")
+    ){
+        return true;
+    }
+
+
+    /* URL */
+
+    const url =
+        getUrl(item).toLowerCase();
+
+    if(url.includes("/shorts/")){
+        return true;
+    }
+
+
+    /* Raw ID */
+
+    const raw =
+        text(
+            getValue(item,[
+                "videoId",
+                "youtubeId",
+                "youtube_id"
+            ])
+        ).toLowerCase();
+
+    if(raw.includes("/shorts/")){
+        return true;
+    }
+
+
+    /* Title */
+
+    const title =
+        getTitle(item).toLowerCase();
+
+    if(
+        title.includes("#shorts") ||
+        title.includes("#short")
+    ){
+        return true;
+    }
+
+
+    /* Description */
+
+    const description =
+        text(
+            getValue(item,[
+                "description",
+                "desc",
+                "caption"
+            ])
+        ).toLowerCase();
+
+    if(
+        description.includes("#shorts") ||
+        description.includes("#short")
+    ){
+        return true;
+    }
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   NORMAL VIDEO CHECK
+========================================================= */
+
+function explicitNormal(item){
+
+    if(!item){
+        return false;
+    }
+
+    const type =
+        text(
+            getValue(item,[
+                "type",
+                "contentType",
+                "content_type",
+                "kind",
+                "format"
+            ])
+        ).toLowerCase();
+
+    if(
+        type === "video" ||
+        type === "videos" ||
+        type === "long" ||
+        type === "longform"
+    ){
+        return true;
+    }
+
+    return false;
+
+}
+
+
+/* =========================================================
+   DURATION CHECK
+========================================================= */
+
+function getDurationSeconds(item){
+
+    const value =
+        getValue(item,[
+            "duration",
+            "durationSeconds",
+            "duration_seconds",
+            "length",
+            "seconds"
+        ]);
+
+    if(value === ""){
+        return 0;
+    }
+
+    if(typeof value === "number"){
+        return value;
+    }
+
+    const str =
+        text(value);
+
+    /*
+       00:14
+       01:20
+       01:02:30
+    */
+
+    if(str.includes(":")){
+
+        const parts =
+            str.split(":").map(Number);
+
+        if(parts.every(n => !isNaN(n))){
+
+            if(parts.length === 2){
+
+                return (
+                    parts[0] * 60 +
+                    parts[1]
+                );
+
+            }
+
+            if(parts.length === 3){
+
+                return (
+                    parts[0] * 3600 +
+                    parts[1] * 60 +
+                    parts[2]
+                );
+
+            }
+
+        }
+
+    }
+
+    const number =
+        parseFloat(str);
+
+    return isNaN(number)
+        ? 0
+        : number;
+
+}
+
+
+/* =========================================================
+   VERTICAL THUMBNAIL CHECK
+========================================================= */
+
+function imageIsVertical(url){
+
+    return new Promise(resolve => {
+
+        if(!url){
+            resolve(false);
+            return;
+        }
+
+        const img =
+            new Image();
+
+        let finished = false;
+
+        const done =
+            result => {
+
+                if(finished){
+                    return;
+                }
+
+                finished = true;
+                resolve(result);
+
+            };
+
+
+        img.onload = function(){
+
+            if(
+                this.naturalWidth &&
+                this.naturalHeight
+            ){
+
+                /*
+                   9:16 type thumbnail
+                   = clearly vertical
+                */
+
+                done(
+                    this.naturalHeight >
+                    this.naturalWidth * 1.15
+                );
+
+            }else{
+
+                done(false);
+
+            }
+
+        };
+
+
+        img.onerror = function(){
+
+            done(false);
+
+        };
+
+
+        setTimeout(
+            () => done(false),
+            5000
+        );
+
+
+        img.src = url;
+
+    });
+
+}
+
+
+/* =========================================================
+   FINAL SHORT CLASSIFICATION
+========================================================= */
+
+async function isShort(item){
+
+    /*
+       1. Strong metadata first
+    */
+
+    if(explicitShort(item)){
+        return true;
+    }
+
+
+    /*
+       2. Explicit normal video
+    */
+
+    if(explicitNormal(item)){
+        return false;
+    }
+
+
+    /*
+       3. If duration says very short
+       and thumbnail is vertical,
+       treat as Short.
+    */
+
+    const duration =
+        getDurationSeconds(item);
+
+    const thumbnail =
+        thumbnailFor(item);
+
+    const vertical =
+        await imageIsVertical(thumbnail);
+
+
+    if(vertical){
+        return true;
+    }
+
+
+    /*
+       4. Very short items without
+       a normal landscape thumbnail
+    */
+
+    if(
+        duration > 0 &&
+        duration <= 180 &&
+        vertical
+    ){
+        return true;
+    }
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   CLASSIFY ALL ITEMS
+========================================================= */
+
+async function classifyItems(items){
+
+    const videos = [];
+    const shorts = [];
+
+    for(const item of items){
+
+        const short =
+            await isShort(item);
+
+        if(short){
+
+            shorts.push(item);
+
+        }else{
+
+            videos.push(item);
+
+        }
+
+    }
+
+    return {
+        videos,
+        shorts
+    };
+
+}
+
+
+/* =========================================================
+   NORMALIZE JSON
+========================================================= */
 
 function normalizeData(data){
 
@@ -1328,7 +1316,9 @@ function normalizeData(data){
     }
 
 
-    /* Direct array */
+    /*
+       Direct array
+    */
 
     if(Array.isArray(data)){
         return data;
@@ -1337,40 +1327,36 @@ function normalizeData(data){
 
     /*
        IMPORTANT:
-       If JSON has separate arrays,
-       combine them instead of returning
-       only the first array.
+       If JSON has separate videos + shorts,
+       combine BOTH here.
     */
 
-    let combined = [];
+    const combined = [];
 
 
     const videoKeys = [
         "videos",
         "latestVideos",
         "latest_videos",
-        "items",
-        "results"
+        "video"
     ];
 
 
     const shortKeys = [
         "shorts",
         "latestShorts",
-        "latest_shorts"
+        "latest_shorts",
+        "short"
     ];
 
 
     for(const key of videoKeys){
 
-        if(
-            Array.isArray(data[key])
-        ){
+        if(Array.isArray(data[key])){
 
-            combined =
-                combined.concat(
-                    data[key]
-                );
+            combined.push(
+                ...data[key]
+            );
 
         }
 
@@ -1379,14 +1365,24 @@ function normalizeData(data){
 
     for(const key of shortKeys){
 
-        if(
-            Array.isArray(data[key])
-        ){
+        if(Array.isArray(data[key])){
 
-            combined =
-                combined.concat(
-                    data[key]
-                );
+            combined.push(
+                ...data[key].map(item => {
+
+                    /*
+                       Mark these as Shorts
+                       so they can NEVER enter
+                       Latest Videos.
+                    */
+
+                    return {
+                        ...item,
+                        isShort:true
+                    };
+
+                })
+            );
 
         }
 
@@ -1398,64 +1394,35 @@ function normalizeData(data){
     }
 
 
-    /* Nested data */
+    /*
+       Other common structures
+    */
+
+    if(Array.isArray(data.items)){
+        return data.items;
+    }
+
+    if(Array.isArray(data.results)){
+        return data.results;
+    }
+
+    if(Array.isArray(data.data)){
+        return data.data;
+    }
+
+
+    /*
+       Nested data
+    */
 
     if(
         data.data &&
         typeof data.data === "object"
     ){
 
-        if(
-            Array.isArray(data.data)
-        ){
-
-            return data.data;
-
-        }
-
-
-        let nested = [];
-
-
-        for(const key of videoKeys){
-
-            if(
-                Array.isArray(
-                    data.data[key]
-                )
-            ){
-
-                nested =
-                    nested.concat(
-                        data.data[key]
-                    );
-
-            }
-
-        }
-
-
-        for(const key of shortKeys){
-
-            if(
-                Array.isArray(
-                    data.data[key]
-                )
-            ){
-
-                nested =
-                    nested.concat(
-                        data.data[key]
-                    );
-
-            }
-
-        }
-
-
-        if(nested.length){
-            return nested;
-        }
+        return normalizeData(
+            data.data
+        );
 
     }
 
@@ -1465,23 +1432,19 @@ function normalizeData(data){
 }
 
 
-/* ==========================================================
+/* =========================================================
    LOAD JSON
-========================================================== */
+========================================================= */
 
 async function loadYouTubeData(){
 
-    for(
-        const file of DATA_FILES
-    ){
+    for(const file of DATA_FILES){
 
         try{
 
             const response =
                 await fetch(
-                    file +
-                    "?v=" +
-                    Date.now(),
+                    file + "?v=" + Date.now(),
                     {
                         cache:"no-store"
                     }
@@ -1504,7 +1467,7 @@ async function loadYouTubeData(){
             if(items.length){
 
                 console.log(
-                    "Loaded:",
+                    "Templewale data loaded:",
                     file,
                     items.length
                 );
@@ -1513,8 +1476,7 @@ async function loadYouTubeData(){
 
             }
 
-        }
-        catch(error){
+        }catch(error){
 
             console.log(
                 "Could not load:",
@@ -1526,64 +1488,56 @@ async function loadYouTubeData(){
 
     }
 
-
     return [];
 
 }
 
 
-/* ==========================================================
-   UNIQUE
-========================================================== */
+/* =========================================================
+   REMOVE DUPLICATES
+========================================================= */
 
 function uniqueItems(items){
 
     const seen =
         new Set();
 
+    return items.filter(item => {
 
-    return items.filter(
-        item => {
+        const id =
+            getVideoId(item);
 
-            const id =
-                getVideoId(item);
+        const url =
+            getUrl(item);
 
-            const url =
-                getUrl(item);
+        const title =
+            getTitle(item);
 
-            const title =
-                getTitle(item);
+        const key =
+            id ||
+            url ||
+            title;
 
-
-            const key =
-                id ||
-                url ||
-                title;
-
-
-            if(!key){
-                return true;
-            }
-
-
-            if(seen.has(key)){
-                return false;
-            }
-
-
-            seen.add(key);
-
+        if(!key){
             return true;
-
         }
-    );
+
+        if(seen.has(key)){
+            return false;
+        }
+
+        seen.add(key);
+
+        return true;
+
+    });
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    SORT
-========================================================== */
+========================================================= */
 
 function sortNewest(a,b){
 
@@ -1595,47 +1549,164 @@ function sortNewest(a,b){
 }
 
 
-/* ==========================================================
-   RENDER NORMAL VIDEOS
-========================================================== */
+/* =========================================================
+   CREATE NORMAL VIDEO CARD
+========================================================= */
+
+function createVideoCard(item){
+
+    const id =
+        getVideoId(item);
+
+    const title =
+        getTitle(item);
+
+    const date =
+        formatDate(item);
+
+    const thumbnail =
+        thumbnailFor(item);
+
+
+    const encoded =
+        encodeURIComponent(
+            JSON.stringify({
+                id:id,
+                title:title,
+                short:false
+            })
+        );
+
+
+    return `
+
+    <article
+        class="video-card"
+        onclick="openPlayerFromEncoded('${encoded}')">
+
+        <div class="thumbnail-wrap">
+
+            ${
+                thumbnail
+                ?
+                `<img
+                    class="thumbnail"
+                    src="${escapeHTML(thumbnail)}"
+                    alt="${escapeHTML(title)}"
+                    loading="lazy"
+                >`
+                :
+                ""
+            }
+
+            <div class="play-button">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="video-info">
+
+            <div class="video-title">
+                ${escapeHTML(title)}
+            </div>
+
+            ${
+                date
+                ?
+                `<div class="video-date">
+                    ${escapeHTML(date)}
+                </div>`
+                :
+                ""
+            }
+
+        </div>
+
+    </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CREATE SHORT CARD
+========================================================= */
+
+function createShortCard(item){
+
+    const id =
+        getVideoId(item);
+
+    const title =
+        getTitle(item);
+
+    const thumbnail =
+        thumbnailFor(item);
+
+
+    const encoded =
+        encodeURIComponent(
+            JSON.stringify({
+                id:id,
+                title:title,
+                short:true
+            })
+        );
+
+
+    return `
+
+    <article
+        class="short-card"
+        onclick="openPlayerFromEncoded('${encoded}')">
+
+        <div class="short-thumbnail">
+
+            ${
+                thumbnail
+                ?
+                `<img
+                    src="${escapeHTML(thumbnail)}"
+                    alt="${escapeHTML(title)}"
+                    loading="lazy"
+                >`
+                :
+                ""
+            }
+
+            <div class="short-play">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="short-info">
+
+            <div class="short-title">
+                ${escapeHTML(title)}
+            </div>
+
+        </div>
+
+    </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   RENDER VIDEOS
+========================================================= */
 
 function renderVideos(items){
 
-    /*
-       ONLY NORMAL VIDEOS
-    */
-
     let videos =
-        items.filter(
-            item => {
-
-                const short =
-                    isShort(item);
-
-                console.log(
-                    "VIDEO CHECK:",
-                    getTitle(item),
-                    "SHORT:",
-                    short
-                );
-
-                return !short;
-
-            }
-        );
-
-
-    videos =
-        uniqueItems(videos);
-
-
-    videos =
-        videos
+        uniqueItems(items)
         .sort(sortNewest)
-        .slice(
-            0,
-            MAX_VIDEOS
-        );
+        .slice(0,MAX_VIDEOS);
 
 
     if(!videos.length){
@@ -1659,29 +1730,16 @@ function renderVideos(items){
 }
 
 
-/* ==========================================================
+/* =========================================================
    RENDER SHORTS
-========================================================== */
+========================================================= */
 
 function renderShorts(items){
 
     let shorts =
-        items.filter(
-            item => isShort(item)
-        );
-
-
-    shorts =
-        uniqueItems(shorts);
-
-
-    shorts =
-        shorts
+        uniqueItems(items)
         .sort(sortNewest)
-        .slice(
-            0,
-            MAX_SHORTS
-        );
+        .slice(0,MAX_SHORTS);
 
 
     if(!shorts.length){
@@ -1705,187 +1763,17 @@ function renderShorts(items){
 }
 
 
-/* ==========================================================
-   VIDEO CARD
-========================================================== */
+/* =========================================================
+   PLAYER
+   DO NOT CHANGE
+========================================================= */
 
-function createVideoCard(item){
+function openPlayer(id,title,isShortVideo){
 
-    const id =
-        getVideoId(item);
-
-    const title =
-        getTitle(item);
-
-    const date =
-        formatDate(item);
-
-    const thumbnail =
-        thumbnailFor(item);
-
-
-    const safeItem =
-        encodeURIComponent(
-            JSON.stringify({
-                id:id,
-                title:title,
-                short:false
-            })
-        );
-
-
-    return `
-
-    <article
-        class="video-card"
-        onclick="openPlayerFromEncoded('${safeItem}')">
-
-        <div class="thumbnail-wrap">
-
-            ${
-                thumbnail
-                ?
-                `
-                <img
-                    class="thumbnail"
-                    src="${escapeHTML(thumbnail)}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="this.style.display='none';"
-                >
-                `
-                :
-                ""
-            }
-
-            <div class="play-button">
-                ▶
-            </div>
-
-        </div>
-
-
-        <div class="video-info">
-
-            <div class="video-title">
-                ${escapeHTML(title)}
-            </div>
-
-            ${
-                date
-                ?
-                `
-                <div class="video-date">
-                    ${escapeHTML(date)}
-                </div>
-                `
-                :
-                ""
-            }
-
-        </div>
-
-    </article>
-
-    `;
-
-}
-
-
-/* ==========================================================
-   SHORT CARD
-========================================================== */
-
-function createShortCard(item){
-
-    const id =
-        getVideoId(item);
-
-    const title =
-        getTitle(item);
-
-    const thumbnail =
-        thumbnailFor(item);
-
-
-    const safeItem =
-        encodeURIComponent(
-            JSON.stringify({
-                id:id,
-                title:title,
-                short:true
-            })
-        );
-
-
-    return `
-
-    <article
-        class="short-card"
-        onclick="openPlayerFromEncoded('${safeItem}')">
-
-        <div class="short-thumbnail">
-
-            ${
-                thumbnail
-                ?
-                `
-                <img
-                    src="${escapeHTML(thumbnail)}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="this.style.display='none';"
-                >
-                `
-                :
-                ""
-            }
-
-
-            <div class="short-play">
-                ▶
-            </div>
-
-        </div>
-
-
-        <div class="short-info">
-
-            <div class="short-title">
-                ${escapeHTML(title)}
-            </div>
-
-        </div>
-
-    </article>
-
-    `;
-
-}
-
-
-/* ==========================================================
-   OPEN PLAYER
-========================================================== */
-
-function openPlayer(
-    id,
-    title,
-    isShortVideo
-){
-
-    id =
-        text(id);
-
+    id = text(id);
 
     if(!id){
-
-        console.log(
-            "No YouTube ID found"
-        );
-
         return;
-
     }
 
 
@@ -1893,24 +1781,11 @@ function openPlayer(
         title || "Templewale";
 
 
-    /*
-       Shorts = vertical player
-       Normal video = 16:9 player
-    */
-
     playerFrame.className =
         isShortVideo
-        ?
-        "player-frame short-player"
-        :
-        "player-frame";
+        ? "player-frame short-player"
+        : "player-frame";
 
-
-    /*
-       IMPORTANT:
-       Video remains INSIDE website.
-       No redirect.
-    */
 
     playerFrame.innerHTML = `
 
@@ -1918,10 +1793,7 @@ function openPlayer(
 
             src="https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0"
 
-            title="${escapeHTML(
-                title ||
-                "Templewale Video"
-            )}"
+            title="${escapeHTML(title || "Templewale Video")}"
 
             allow="
                 accelerometer;
@@ -1940,10 +1812,7 @@ function openPlayer(
     `;
 
 
-    playerOverlay.classList.add(
-        "active"
-    );
-
+    playerOverlay.classList.add("active");
 
     document.body.style.overflow =
         "hidden";
@@ -1951,21 +1820,17 @@ function openPlayer(
 }
 
 
-/* ==========================================================
+/* =========================================================
    OPEN ENCODED
-========================================================== */
+========================================================= */
 
-function openPlayerFromEncoded(
-    encoded
-){
+function openPlayerFromEncoded(encoded){
 
     try{
 
         const data =
             JSON.parse(
-                decodeURIComponent(
-                    encoded
-                )
+                decodeURIComponent(encoded)
             );
 
 
@@ -1975,8 +1840,7 @@ function openPlayerFromEncoded(
             data.short === true
         );
 
-    }
-    catch(error){
+    }catch(error){
 
         console.log(
             "Player error:",
@@ -1988,9 +1852,9 @@ function openPlayerFromEncoded(
 }
 
 
-/* ==========================================================
+/* =========================================================
    CLOSE PLAYER
-========================================================== */
+========================================================= */
 
 function closeVideoPlayer(){
 
@@ -1998,20 +1862,12 @@ function closeVideoPlayer(){
         "active"
     );
 
+    playerFrame.innerHTML = "";
 
-    playerFrame.innerHTML =
-        "";
-
-
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
 }
 
-
-/* ==========================================================
-   CLOSE BUTTON
-========================================================== */
 
 closePlayer.addEventListener(
     "click",
@@ -2019,18 +1875,11 @@ closePlayer.addEventListener(
 );
 
 
-/* ==========================================================
-   CLICK OUTSIDE
-========================================================== */
-
 playerOverlay.addEventListener(
     "click",
     function(event){
 
-        if(
-            event.target ===
-            playerOverlay
-        ){
+        if(event.target === playerOverlay){
 
             closeVideoPlayer();
 
@@ -2039,10 +1888,6 @@ playerOverlay.addEventListener(
     }
 );
 
-
-/* ==========================================================
-   ESCAPE
-========================================================== */
 
 document.addEventListener(
     "keydown",
@@ -2050,9 +1895,7 @@ document.addEventListener(
 
         if(
             event.key === "Escape" &&
-            playerOverlay.classList.contains(
-                "active"
-            )
+            playerOverlay.classList.contains("active")
         ){
 
             closeVideoPlayer();
@@ -2063,9 +1906,9 @@ document.addEventListener(
 );
 
 
-/* ==========================================================
-   START WEBSITE
-========================================================== */
+/* =========================================================
+   START
+========================================================= */
 
 async function startWebsite(){
 
@@ -2081,13 +1924,11 @@ async function startWebsite(){
             </div>
         `;
 
-
         shortsContainer.innerHTML = `
             <div class="empty">
                 Shorts data load नहीं हो पाया।
             </div>
         `;
-
 
         return;
 
@@ -2095,26 +1936,40 @@ async function startWebsite(){
 
 
     /*
-       SAME DATA
-       TWO SEPARATE SECTIONS
+       NEW IMPORTANT SYSTEM
 
-       Latest Videos:
-       !isShort()
-
-       Latest Shorts:
-       isShort()
+       पहले हर item को classify करेंगे।
+       उसके बाद ही दोनों sections में डालेंगे।
     */
 
-    renderVideos(items);
+    const classified =
+        await classifyItems(items);
 
-    renderShorts(items);
+
+    console.log(
+        "NORMAL VIDEOS:",
+        classified.videos
+    );
+
+    console.log(
+        "SHORTS:",
+        classified.shorts
+    );
+
+
+    renderVideos(
+        classified.videos
+    );
+
+
+    renderShorts(
+        classified.shorts
+    );
 
 }
 
 
-/* ==========================================================
-   RUN
-========================================================== */
+/* RUN */
 
 startWebsite();
 
