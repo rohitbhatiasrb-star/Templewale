@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Templewale | Sanatan Dharma & Temple Journeys</title>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Templewale | Sanatan Dharma & Temple Journeys
+</title>
+
+<meta
+  name="description"
+  content="Templewale — मंदिर, यात्रा, Sanatan Dharma और आध्यात्मिक अनुभव।"
+>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -21,7 +37,10 @@ html{
 body{
   background:#080706;
   color:#f7ead5;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
   line-height:1.6;
 }
 
@@ -30,16 +49,26 @@ a{
   text-decoration:none;
 }
 
-/* HEADER */
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:rgba(8,7,6,.96);
+  z-index:1000;
+
+  background:
+    rgba(8,7,6,.96);
+
   backdrop-filter:blur(12px);
-  border-bottom:1px solid #3b2919;
-  padding:22px 6%;
+
+  border-bottom:
+    1px solid #3b2919;
+
+  padding:
+    22px 6%;
 }
 
 .logo{
@@ -52,20 +81,24 @@ header{
   color:#e7a23b;
 }
 
-/* SECTIONS */
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 section{
-  padding:60px 6%;
+  padding:
+    60px 6%;
 }
 
 .hero{
   background:
-  radial-gradient(
-    circle at top right,
-    #39200d 0,
-    transparent 45%
-  ),
-  #0b0907;
+    radial-gradient(
+      circle at top right,
+      #39200d 0,
+      transparent 45%
+    ),
+    #0b0907;
 }
 
 h1,
@@ -87,25 +120,41 @@ p{
 
 .btn{
   display:inline-block;
+
   color:#e9aa43;
+
   font-weight:700;
+
   font-size:18px;
-  margin:10px 0 35px;
+
+  margin:
+    10px 0 35px;
 }
 
-/* GRID */
+
+/* =========================================================
+   VIDEO GRID
+========================================================= */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
   gap:22px;
 }
 
-/* VIDEO CARD */
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .card{
   position:relative;
+
   display:block;
+
   background:
     linear-gradient(
       145deg,
@@ -113,45 +162,72 @@ p{
       #0d0b09
     );
 
-  border:1px solid #51371e;
+  border:
+    1px solid #51371e;
+
   border-radius:22px;
+
   overflow:hidden;
-  transition:.25s ease;
+
+  transition:
+    .25s ease;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  border-color:#c47e25;
-  box-shadow:0 12px 35px rgba(0,0,0,.35);
+  transform:
+    translateY(-4px);
+
+  border-color:
+    #c47e25;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.35);
 }
 
-/* THUMBNAIL */
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
 
 .thumb-wrap{
   position:relative;
+
   width:100%;
+
   aspect-ratio:16/9;
+
   overflow:hidden;
+
   background:#21150c;
 }
 
 .thumb{
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   display:block;
+
   transition:.3s;
 }
 
 .card:hover .thumb{
-  transform:scale(1.03);
+  transform:
+    scale(1.03);
 }
 
-/* SHORT THUMBNAIL */
+
+/* =========================================================
+   SHORT THUMBNAIL
+========================================================= */
 
 .short-thumb{
   aspect-ratio:9/16;
+
   max-height:520px;
+
   background:#21150c;
 }
 
@@ -159,38 +235,57 @@ p{
   object-fit:cover;
 }
 
-/* PLAY BUTTON */
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
 
 .play{
   position:absolute;
+
   left:50%;
   top:50%;
-  transform:translate(-50%,-50%);
+
+  transform:
+    translate(-50%,-50%);
 
   width:76px;
   height:76px;
 
   border-radius:50%;
 
-  background:rgba(0,0,0,.68);
-  border:3px solid rgba(255,255,255,.9);
+  background:
+    rgba(0,0,0,.68);
+
+  border:
+    3px solid
+    rgba(255,255,255,.9);
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   font-size:30px;
+
   color:white;
 
   transition:.2s;
 }
 
 .card:hover .play{
-  transform:translate(-50%,-50%) scale(1.08);
-  background:rgba(210,130,30,.88);
+  transform:
+    translate(-50%,-50%)
+    scale(1.08);
+
+  background:
+    rgba(210,130,30,.88);
 }
 
-/* CONTENT */
+
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .content{
   padding:20px;
@@ -199,14 +294,18 @@ p{
 .badge{
   display:inline-block;
 
-  border:1px solid #9b692c;
+  border:
+    1px solid #9b692c;
+
   color:#e5a23d;
 
   border-radius:30px;
 
-  padding:4px 12px;
+  padding:
+    4px 12px;
 
   font-size:12px;
+
   font-weight:bold;
 
   margin-bottom:12px;
@@ -214,30 +313,43 @@ p{
 
 .title{
   font-size:20px;
+
   font-weight:700;
+
   line-height:1.45;
+
   margin-bottom:10px;
 }
 
 .date{
   color:#927e69;
+
   font-size:14px;
+
   margin-bottom:14px;
 }
 
 .watch{
   color:#e6a33e;
+
   font-weight:bold;
+
   font-size:16px;
 }
 
-/* LOADING */
+
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
 
 .loading{
-  border:1px dashed #59452f;
+  border:
+    1px dashed #59452f;
+
   border-radius:20px;
 
-  padding:40px 20px;
+  padding:
+    40px 20px;
 
   text-align:center;
 
@@ -248,7 +360,10 @@ p{
   grid-column:1/-1;
 }
 
-/* SHORTS SECTION */
+
+/* =========================================================
+   SHORTS
+========================================================= */
 
 .shorts-section{
   background:#090807;
@@ -256,6 +371,7 @@ p{
 
 .shorts-grid{
   display:grid;
+
   grid-template-columns:
     repeat(4,minmax(0,1fr));
 
@@ -274,7 +390,10 @@ p{
   font-size:17px;
 }
 
-/* JOURNEYS */
+
+/* =========================================================
+   JOURNEYS
+========================================================= */
 
 .journey{
   background:
@@ -288,6 +407,7 @@ p{
 
 .journey-grid{
   display:grid;
+
   grid-template-columns:
     repeat(2,minmax(0,1fr));
 
@@ -295,98 +415,120 @@ p{
 }
 
 .journey-card{
-  min-height:240px;
+  min-height:280px;
 
   padding:30px;
 
   display:flex;
+
   flex-direction:column;
+
   justify-content:flex-end;
 
   position:relative;
+
   overflow:hidden;
+
+  border:
+    1px solid #51371e;
+
+  border-radius:22px;
+
+  background:
+    #17100b;
+}
+
+.journey-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
 
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.9),
+      rgba(0,0,0,.92),
       rgba(0,0,0,.15)
     );
 
-  border:1px solid #51371e;
-}
-
-/* JOURNEY IMAGE */
-
-.journey-card::before{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background-image:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.85),
-      rgba(0,0,0,.15)
-    ),
-    var(--journey-image);
-
-  background-size:cover;
-  background-position:center;
-
   z-index:0;
-
-  transition:.4s;
-}
-
-.journey-card:hover::before{
-  transform:scale(1.05);
 }
 
 .journey-content{
   position:relative;
+
   z-index:2;
 }
 
 .journey-card h3{
   font-size:22px;
+
   margin-bottom:5px;
 }
 
 .journey-card small{
   color:#c5b6a4;
+
   font-size:14px;
 }
 
-/* JOURNEY IMAGES */
+
+/* =========================================================
+   JOURNEY PLACEHOLDER BACKGROUNDS
+
+   IMPORTANT:
+   No fake Taj Mahal image.
+========================================================= */
 
 .tarkeshwar{
-  --journey-image:
-  url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80");
+  background:
+    linear-gradient(
+      135deg,
+      #21150c,
+      #100c08
+    );
 }
 
 .prakasheshwar{
-  --journey-image:
-  url("https://images.unsplash.com/photo-1604608672516-f1b9e8d5a7f5?auto=format&fit=crop&w=1200&q=80");
+  background:
+    linear-gradient(
+      135deg,
+      #24170d,
+      #100c08
+    );
 }
 
 .lakhamandal{
-  --journey-image:
-  url("https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1200&q=80");
+  background:
+    linear-gradient(
+      135deg,
+      #1d150e,
+      #0d0b08
+    );
 }
 
 .badrinath{
-  --journey-image:
-  url("https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80");
+  background:
+    linear-gradient(
+      135deg,
+      #20180f,
+      #0d0b08
+    );
 }
 
-/* DHARMA */
+
+/* =========================================================
+   DHARMA
+========================================================= */
 
 .dharma{
   margin-top:50px;
 
-  border:1px solid #53381e;
+  border:
+    1px solid #53381e;
+
   border-radius:25px;
 
   padding:40px;
@@ -403,19 +545,27 @@ p{
   margin-bottom:15px;
 }
 
-/* FOOTER */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-  border-top:1px solid #302116;
+  border-top:
+    1px solid #302116;
 
-  padding:35px 6%;
+  padding:
+    35px 6%;
 
   text-align:center;
 
   color:#8e7d6c;
 }
 
-/* DESKTOP */
+
+/* =========================================================
+   DESKTOP
+========================================================= */
 
 @media(min-width:1000px){
 
@@ -428,7 +578,10 @@ footer{
 
 }
 
-/* TABLET */
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:900px){
 
@@ -439,12 +592,16 @@ footer{
 
 }
 
-/* MOBILE */
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
   header{
-    padding:18px 6%;
+    padding:
+      18px 6%;
   }
 
   .logo{
@@ -452,7 +609,8 @@ footer{
   }
 
   section{
-    padding:45px 6%;
+    padding:
+      45px 6%;
   }
 
   h1{
@@ -489,6 +647,7 @@ footer{
   .play{
     width:65px;
     height:65px;
+
     font-size:25px;
   }
 
@@ -501,12 +660,16 @@ footer{
   }
 
   .dharma{
-    padding:28px 22px;
+    padding:
+      28px 22px;
   }
 
 }
 
-/* SMALL MOBILE */
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:430px){
 
@@ -530,9 +693,16 @@ footer{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header>
 
@@ -543,13 +713,16 @@ footer{
 </header>
 
 
-<!-- ========================= -->
-<!-- LATEST VIDEOS -->
-<!-- ========================= -->
+
+<!-- =======================================================
+     LATEST VIDEOS
+======================================================= -->
 
 <section class="hero">
 
-  <h1>Latest Videos</h1>
+  <h1>
+    Latest Videos
+  </h1>
 
   <p>
     Templewale के latest videos —
@@ -560,16 +733,24 @@ footer{
   <a
     class="btn"
     href="https://www.youtube.com/@templewale"
-    target="_blank">
+    target="_blank"
+    rel="noopener noreferrer"
+  >
 
     View on YouTube →
 
   </a>
 
-  <div id="videos" class="grid">
+
+  <div
+    id="videos"
+    class="grid"
+  >
 
     <div class="loading">
+
       Videos load हो रहे हैं...
+
     </div>
 
   </div>
@@ -577,13 +758,16 @@ footer{
 </section>
 
 
-<!-- ========================= -->
-<!-- LATEST SHORTS -->
-<!-- ========================= -->
+
+<!-- =======================================================
+     LATEST SHORTS
+======================================================= -->
 
 <section class="shorts-section">
 
-  <h2>Latest Shorts</h2>
+  <h2>
+    Latest Shorts
+  </h2>
 
   <p>
     छोटे लेकिन खास moments —
@@ -594,16 +778,24 @@ footer{
   <a
     class="btn"
     href="https://www.youtube.com/@templewale/shorts"
-    target="_blank">
+    target="_blank"
+    rel="noopener noreferrer"
+  >
 
     View All Shorts →
 
   </a>
 
-  <div id="shorts" class="shorts-grid">
+
+  <div
+    id="shorts"
+    class="shorts-grid"
+  >
 
     <div class="loading">
+
       Shorts load हो रहे हैं...
+
     </div>
 
   </div>
@@ -611,13 +803,16 @@ footer{
 </section>
 
 
-<!-- ========================= -->
-<!-- TEMPLE JOURNEYS -->
-<!-- ========================= -->
+
+<!-- =======================================================
+     TEMPLE JOURNEYS
+======================================================= -->
 
 <section class="journey">
 
-  <h2>Temple Journeys</h2>
+  <h2>
+    Temple Journeys
+  </h2>
 
   <p>
     Templewale की प्रमुख यात्राओं और
@@ -628,10 +823,14 @@ footer{
   <div class="journey-grid">
 
 
+    <!-- TARKESHWAR -->
+
     <a
       class="card journey-card tarkeshwar"
       href="https://www.youtube.com/results?search_query=Templewale+Tarkeshwar+Mahadev"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       <div class="journey-content">
 
@@ -648,10 +847,15 @@ footer{
     </a>
 
 
+
+    <!-- PRAKASHESHWAR -->
+
     <a
       class="card journey-card prakasheshwar"
       href="https://www.youtube.com/results?search_query=Templewale+Prakasheshwar+Mahadev"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       <div class="journey-content">
 
@@ -668,10 +872,15 @@ footer{
     </a>
 
 
+
+    <!-- LAKHAMANDAL -->
+
     <a
       class="card journey-card lakhamandal"
       href="https://www.youtube.com/results?search_query=Templewale+Lakhamandal"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       <div class="journey-content">
 
@@ -688,10 +897,15 @@ footer{
     </a>
 
 
+
+    <!-- BADRINATH -->
+
     <a
       class="card journey-card badrinath"
       href="https://www.youtube.com/results?search_query=Templewale+Badrinath+Dham"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       <div class="journey-content">
 
@@ -711,7 +925,10 @@ footer{
   </div>
 
 
-  <!-- DHARMA -->
+
+  <!-- =====================================================
+       DHARMA
+  ====================================================== -->
 
   <div class="dharma">
 
@@ -729,7 +946,9 @@ footer{
     <a
       class="btn"
       href="https://www.youtube.com/@templewale/search?query=Know%20Your%20Dharma"
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer"
+    >
 
       Explore Dharma →
 
@@ -740,6 +959,11 @@ footer{
 </section>
 
 
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
 
   © Templewale • Sanatan • Temples • Travel • Dharma
@@ -747,11 +971,17 @@ footer{
 </footer>
 
 
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
 
-/* ==========================================
-   HELPERS
-========================================== */
+
+/* =========================================================
+   GET VALUE
+========================================================= */
 
 function getValue(item, keys){
 
@@ -775,50 +1005,56 @@ function getValue(item, keys){
 }
 
 
-/* ==========================================
+
+/* =========================================================
    GET ARRAY
-========================================== */
+========================================================= */
 
-function getArray(data,type){
-
-  if(Array.isArray(data))
-    return data;
+function getArray(data, type){
 
   if(
     data &&
     Array.isArray(data[type])
-  )
+  ){
+
     return data[type];
 
-  if(
-    data &&
-    Array.isArray(data.items)
-  )
-    return data.items;
+  }
 
   return [];
 
 }
 
 
-/* ==========================================
+
+/* =========================================================
    YOUTUBE ID
-========================================== */
+========================================================= */
 
 function youtubeId(item){
 
-  let id=getValue(
-    item,
-    [
-      "videoId",
-      "video_id",
-      "id"
-    ]
-  );
+  let id =
+    getValue(
+      item,
+      [
+        "id",
+        "videoId",
+        "video_id"
+      ]
+    );
 
-  if(typeof id==="object" && id){
 
-    id=
+  /*
+    If id is object
+  */
+
+  if(
+    typeof id === "object"
+    &&
+    id
+  ){
+
+    id =
       id.videoId ||
       id.video_id ||
       id.id ||
@@ -826,30 +1062,43 @@ function youtubeId(item){
 
   }
 
-  if(id)
+
+  if(id){
+
     return String(id);
 
+  }
 
-  const url=getValue(
-    item,
-    [
-      "url",
-      "videoUrl",
-      "link",
-      "youtubeUrl"
-    ]
-  );
+
+  /*
+    Try URL
+  */
+
+  const url =
+    getValue(
+      item,
+      [
+        "url",
+        "videoUrl",
+        "link",
+        "youtubeUrl"
+      ]
+    );
 
 
   if(url){
 
-    const match=
+    const match =
       String(url).match(
         /(?:v=|youtu\.be\/|shorts\/)([A-Za-z0-9_-]{6,})/
       );
 
-    if(match)
+
+    if(match){
+
       return match[1];
+
+    }
 
   }
 
@@ -859,23 +1108,50 @@ function youtubeId(item){
 }
 
 
-/* ==========================================
-   URL
-========================================== */
 
-function youtubeUrl(item,id,type){
+/* =========================================================
+   YOUTUBE URL
+========================================================= */
 
-  if(type==="shorts" && id){
+function youtubeUrl(
+  item,
+  id,
+  type
+){
 
-    return "https://www.youtube.com/shorts/"+id;
+  /*
+    Shorts
+  */
+
+  if(
+    type === "shorts"
+    &&
+    id
+  ){
+
+    return (
+      "https://www.youtube.com/shorts/"
+      +
+      id
+    );
 
   }
+
+
+  /*
+    Normal video
+  */
 
   if(id){
 
-    return "https://www.youtube.com/watch?v="+id;
+    return (
+      "https://www.youtube.com/watch?v="
+      +
+      id
+    );
 
   }
+
 
   return getValue(
     item,
@@ -885,79 +1161,67 @@ function youtubeUrl(item,id,type){
       "link",
       "youtubeUrl"
     ]
-  ) || "https://www.youtube.com/@templewale";
-
-}
-
-
-/* ==========================================
-   CHECK SHORT
-========================================== */
-
-function isShort(item){
-
-  const type=
-    String(
-      getValue(
-        item,
-        [
-          "type",
-          "contentType",
-          "videoType",
-          "category"
-        ]
-      )
-    ).toLowerCase();
-
-
-  if(
-    type.includes("short")
   )
-    return true;
-
-
-  const url=
-    String(
-      getValue(
-        item,
-        [
-          "url",
-          "videoUrl",
-          "link",
-          "youtubeUrl"
-        ]
-      )
-    ).toLowerCase();
-
-
-  if(url.includes("/shorts/"))
-    return true;
-
-
-  const format=
-    String(
-      getValue(
-        item,
-        [
-          "format",
-          "kind"
-        ]
-      )
-    ).toLowerCase();
-
-
-  if(format.includes("short"))
-    return true;
-
-
-  return false;
+  ||
+  "https://www.youtube.com/@templewale";
 
 }
 
 
-/* ==========================================
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+function thumbnailUrl(
+  item,
+  id
+){
+
+  /*
+    IMPORTANT:
+
+    Always use the current video's ID
+    first.
+
+    This prevents wrong thumbnails.
+  */
+
+  if(id){
+
+    return (
+      "https://i.ytimg.com/vi/"
+      +
+      id
+      +
+      "/hqdefault.jpg"
+    );
+
+  }
+
+
+  /*
+    Fallback
+  */
+
+  return getValue(
+    item,
+    [
+      "thumbnail",
+      "thumbnailUrl",
+      "image",
+      "imageUrl",
+      "thumbnail_url"
+    ]
+  );
+
+}
+
+
+
+/* =========================================================
    ESCAPE HTML
-========================================== */
+========================================================= */
 
 function escapeHtml(text){
 
@@ -991,16 +1255,30 @@ function escapeHtml(text){
 }
 
 
-/* ==========================================
+
+/* =========================================================
    DATE
-========================================== */
+========================================================= */
 
 function formatDate(value){
 
-  const d=new Date(value);
+  if(!value){
 
-  if(isNaN(d))
+    return "";
+
+  }
+
+
+  const d =
+    new Date(value);
+
+
+  if(isNaN(d)){
+
     return String(value);
+
+  }
+
 
   return d.toLocaleDateString(
     "en-IN",
@@ -1014,79 +1292,52 @@ function formatDate(value){
 }
 
 
-/* ==========================================
-   THUMBNAIL
-========================================== */
 
-function thumbnailUrl(item,id){
+/* =========================================================
+   CREATE VIDEO CARD
+========================================================= */
 
-  const thumbnail=
-    getValue(
-      item,
-      [
-        "thumbnail",
-        "thumbnailUrl",
-        "image",
-        "imageUrl",
-        "thumbnail_url"
-      ]
-    );
+function createCard(
+  item,
+  type
+){
 
-
-  if(thumbnail)
-    return thumbnail;
-
-
-  if(id)
-    return "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
-
-
-  return "";
-
-}
-
-
-/* ==========================================
-   CREATE CARD
-========================================== */
-
-function card(item,type){
-
-  const id=
+  const id =
     youtubeId(item);
 
 
-  const title=
+  const title =
     getValue(
       item,
       [
         "title",
         "name"
       ]
-    ) ||
+    )
+    ||
     "Templewale";
 
 
-  const thumbnail=
+  const thumbnail =
     thumbnailUrl(
       item,
       id
     );
 
 
-  const date=
+  const date =
     getValue(
       item,
       [
-        "publishedAt",
         "published",
+        "publishedAt",
         "date",
         "published_at"
       ]
     );
 
 
-  const href=
+  const href =
     youtubeUrl(
       item,
       id,
@@ -1094,8 +1345,8 @@ function card(item,type){
     );
 
 
-  const short=
-    type==="shorts";
+  const short =
+    type === "shorts";
 
 
   return `
@@ -1113,14 +1364,21 @@ function card(item,type){
 
         `
 
-        <div class="thumb-wrap ${short ? "short-thumb" : ""}">
+        <div
+          class="thumb-wrap
+          ${short ? "short-thumb" : ""}"
+        >
 
           <img
             class="thumb"
             src="${thumbnail}"
             alt="${escapeHtml(title)}"
             loading="lazy"
-            onerror="this.style.display='none'"
+
+            onerror="
+              this.onerror=null;
+              this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg';
+            "
           >
 
           <div class="play">
@@ -1144,8 +1402,10 @@ function card(item,type){
 
           ${
             short
-            ? "SHORT"
-            : "VIDEO"
+            ?
+            "SHORT"
+            :
+            "VIDEO"
           }
 
         </span>
@@ -1160,6 +1420,7 @@ function card(item,type){
 
         ${
           date
+
           ?
 
           `
@@ -1181,7 +1442,13 @@ function card(item,type){
 
         <div class="watch">
 
-          Watch here →
+          ${
+            short
+            ?
+            "Watch Short →"
+            :
+            "Watch Video →"
+          }
 
         </div>
 
@@ -1194,323 +1461,106 @@ function card(item,type){
 }
 
 
-/* ==========================================
-   LOAD
-========================================== */
 
-async function load(){
+/* =========================================================
+   UNIQUE
+========================================================= */
 
-  const videos=
-    document.getElementById(
-      "videos"
-    );
+function unique(items){
 
-
-  const shorts=
-    document.getElementById(
-      "shorts"
-    );
+  const seen =
+    new Set();
 
 
-  try{
-
-    const response=
-      await fetch(
-        "./youtube.json?v="+Date.now()
-      );
+  const result =
+    [];
 
 
-    if(!response.ok){
+  for(
+    const item
+    of items
+  ){
 
-      throw new Error(
-        "youtube.json नहीं मिला"
-      );
+    const id =
+      youtubeId(item);
+
+
+    /*
+      If no ID,
+      keep item.
+    */
+
+    if(!id){
+
+      result.push(item);
+
+      continue;
 
     }
 
-
-    const data=
-      await response.json();
-
-
-    /*
-      पहले JSON के अलग-अलग
-      videos / shorts arrays check
-    */
-
-    let videoList=
-      getArray(
-        data,
-        "videos"
-      );
-
-
-    let shortList=
-      getArray(
-        data,
-        "shorts"
-      );
-
-
-    /*
-      अगर shorts अलग array नहीं है,
-      तो सभी items को classify करेंगे.
-    */
-
-    let allItems=[];
-
-
-    if(Array.isArray(data))
-      allItems=data;
-
-    else if(
-      data &&
-      Array.isArray(data.items)
-    )
-      allItems=data.items;
-
-    else{
-
-      allItems=[
-        ...videoList,
-        ...shortList
-      ];
-
-    }
-
-
-    /*
-      Separate automatically
-    */
 
     if(
-      allItems.length
+      seen.has(id)
     ){
 
-      const detectedShorts=
-        allItems.filter(
-          item=>isShort(item)
-        );
-
-
-      const detectedVideos=
-        allItems.filter(
-          item=>!isShort(item)
-        );
-
-
-      /*
-        अगर JSON में explicit shorts
-        मौजूद हैं तो उन्हें priority दें.
-      */
-
-      if(
-        detectedShorts.length
-      ){
-
-        shortList=
-          detectedShorts;
-
-      }
-
-
-      if(
-        detectedVideos.length
-      ){
-
-        videoList=
-          detectedVideos;
-
-      }
+      continue;
 
     }
 
 
-    /*
-      Remove duplicate videos
-    */
+    seen.add(id);
 
-    function unique(list){
-
-      const seen=
-        new Set();
-
-      return list.filter(
-        item=>{
-
-          const id=
-            youtubeId(item);
-
-          if(!id)
-            return true;
-
-          if(seen.has(id))
-            return false;
-
-          seen.add(id);
-
-          return true;
-
-        }
-      );
-
-    }
-
-
-    videoList=
-      unique(videoList);
-
-
-    shortList=
-      unique(shortList);
-
-
-    /*
-      Sort newest first
-    */
-
-    function sortNewest(a,b){
-
-      const da=
-        new Date(
-          getValue(
-            a,
-            [
-              "publishedAt",
-              "published",
-              "date",
-              "published_at"
-            ]
-          )
-        ).getTime();
-
-
-      const db=
-        new Date(
-          getValue(
-            b,
-            [
-              "publishedAt",
-              "published",
-              "date",
-              "published_at"
-            ]
-          )
-        ).getTime();
-
-
-      return db-da;
-
-    }
-
-
-    videoList.sort(sortNewest);
-
-    shortList.sort(sortNewest);
-
-
-    /*
-      Latest Videos
-    */
-
-    videos.innerHTML=
-      videoList.length
-
-      ?
-
-      videoList
-        .slice(0,6)
-        .map(
-          x=>card(x,"videos")
-        )
-        .join("")
-
-      :
-
-      `
-
-      <div class="loading">
-
-        Latest videos अभी उपलब्ध नहीं हैं.
-
-      </div>
-
-      `;
-
-
-    /*
-      Latest Shorts
-    */
-
-    shorts.innerHTML=
-      shortList.length
-
-      ?
-
-      shortList
-        .slice(0,8)
-        .map(
-          x=>card(x,"shorts")
-        )
-        .join("")
-
-      :
-
-      `
-
-      <div class="loading">
-
-        Latest Shorts अभी उपलब्ध नहीं हैं.
-
-      </div>
-
-      `;
-
+    result.push(item);
 
   }
 
-  catch(error){
 
-    console.error(error);
-
-
-    videos.innerHTML=
-      `
-
-      <div class="loading">
-
-        Videos load नहीं हो पाए.<br>
-
-        कृपया थोड़ी देर बाद refresh करें.
-
-      </div>
-
-      `;
-
-
-    shorts.innerHTML=
-      `
-
-      <div class="loading">
-
-        Shorts load नहीं हो पाए.<br>
-
-        कृपया थोड़ी देर बाद refresh करें.
-
-      </div>
-
-      `;
-
-  }
+  return result;
 
 }
 
 
-/* START */
 
-load();
+/* =========================================================
+   SORT NEWEST
+========================================================= */
 
-</script>
+function sortNewest(a,b){
 
-</body>
-</html>
+  const da =
+    new Date(
+      getValue(
+        a,
+        [
+          "published",
+          "publishedAt",
+          "date",
+          "published_at"
+        ]
+      )
+    ).getTime();
+
+
+  const db =
+    new Date(
+      getValue(
+        b,
+        [
+          "published",
+          "publishedAt",
+          "date",
+          "published_at"
+        ]
+      )
+    ).getTime();
+
+
+  return db - da;
+
+}
+
+
+
+/* =========================================================
+   LOAD
+=======
