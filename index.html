@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,7 +31,9 @@ body{
     overflow-x:hidden;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     width:100%;
@@ -62,7 +65,9 @@ header{
     color:#e99a2f;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 main{
     width:100%;
@@ -99,7 +104,9 @@ main{
     margin-bottom:42px;
 }
 
-/* VIDEO GRID */
+/* =========================
+   VIDEO GRID
+========================= */
 
 .video-grid{
     display:grid;
@@ -155,7 +162,9 @@ main{
     padding-left:5px;
 }
 
-/* VIDEO INFO */
+/* =========================
+   VIDEO INFO
+========================= */
 
 .video-info{
     padding:26px 28px 30px;
@@ -174,7 +183,9 @@ main{
     color:#bcae9e;
 }
 
-/* SHORTS */
+/* =========================
+   SHORTS
+========================= */
 
 .shorts-section{
     background:#080706;
@@ -242,7 +253,9 @@ main{
     font-weight:700;
 }
 
-/* LOADING */
+/* =========================
+   LOADING
+========================= */
 
 .loading{
     min-height:190px;
@@ -265,7 +278,9 @@ main{
     font-size:20px;
 }
 
-/* PLAYER */
+/* =========================
+   PLAYER
+========================= */
 
 .player-overlay{
     position:fixed;
@@ -339,7 +354,9 @@ main{
     margin:auto;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     border-top:1px solid rgba(223,155,54,.25);
@@ -359,7 +376,9 @@ footer{
     font-size:15px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
@@ -492,6 +511,10 @@ footer{
 
 <main>
 
+<!-- =========================
+     LATEST NORMAL VIDEOS
+========================= -->
+
 <section class="section">
 
 <h1 class="section-title">
@@ -523,6 +546,10 @@ Videos load हो रहे हैं...
 
 </section>
 
+
+<!-- =========================
+     LATEST SHORTS
+========================= -->
 
 <section class="section shorts-section">
 
@@ -558,7 +585,9 @@ Shorts load हो रहे हैं...
 </main>
 
 
-<!-- PLAYER -->
+<!-- =========================
+     PLAYER
+========================= -->
 
 <div
 id="playerOverlay"
@@ -623,35 +652,15 @@ const MAX_SHORTS = 10;
 
 
 /*
-=========================================================
-IMPORTANT
+   IMPORTANT SHORT RULE
 
-These are the Shorts currently present in the JSON
-you provided.
+   Anything LESS THAN 90 seconds
+   will be treated as a Short.
 
-This guarantees that Shorts which do NOT have
-"#Shorts" in their title are still excluded.
-=========================================================
+   90 seconds exactly = NORMAL VIDEO
 */
 
-const KNOWN_SHORT_IDS = new Set([
-
-    "rxpj-GPovWg",
-    "-3CvEF5MRrU",
-    "HqGhBxcbhww",
-    "cvVbbKZqLN4",
-    "ITtGAofqTZw",
-    "9yrX97QrX5Y",
-    "5oq-eMRnXmo",
-    "c37p-ewlb9M",
-    "172KMV5lCaQ",
-    "st5CXkiumZs",
-    "3Sk94znTyVg",
-    "ET6AUBdAlBc",
-    "k5pGYsJJo7s",
-    "p2gdNuzvfI4"
-
-]);
+const SHORT_MAX_SECONDS = 90;
 
 
 /* =========================================================
@@ -688,7 +697,6 @@ function text(value){
     }
 
     return String(value).trim();
-
 }
 
 
@@ -700,7 +708,6 @@ function escapeHTML(value){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 
@@ -757,7 +764,6 @@ function getVideoId(item){
     }
 
     return id;
-
 }
 
 
@@ -844,23 +850,6 @@ function getTitle(item){
             "video_title"
         ])
     ) || "Templewale Video";
-
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-function getDescription(item){
-
-    return text(
-        getValue(item,[
-            "description",
-            "desc",
-            "caption"
-        ])
-    );
 
 }
 
@@ -962,7 +951,7 @@ function thumbnailFor(item){
 
 
 /* =========================================================
-   STRONG SHORT DETECTION
+   EXPLICIT SHORT CHECK
 ========================================================= */
 
 function explicitShort(item){
@@ -973,28 +962,7 @@ function explicitShort(item){
 
 
     /*
-    ---------------------------------------------------------
-    1. KNOWN SHORT ID
-    ---------------------------------------------------------
-    */
-
-    const id =
-        getVideoId(item);
-
-    if(
-        id &&
-        KNOWN_SHORT_IDS.has(id)
-    ){
-
-        return true;
-
-    }
-
-
-    /*
-    ---------------------------------------------------------
-    2. BOOLEAN
-    ---------------------------------------------------------
+       Boolean
     */
 
     if(
@@ -1009,9 +977,7 @@ function explicitShort(item){
 
 
     /*
-    ---------------------------------------------------------
-    3. TYPE
-    ---------------------------------------------------------
+       Type
     */
 
     const type =
@@ -1037,16 +1003,49 @@ function explicitShort(item){
 
 
     /*
-    ---------------------------------------------------------
-    4. URL
-    ---------------------------------------------------------
+       URL
     */
 
     const url =
         getUrl(item).toLowerCase();
 
+    if(url.includes("/shorts/")){
+
+        return true;
+
+    }
+
+
+    /*
+       Raw ID
+    */
+
+    const raw =
+        text(
+            getValue(item,[
+                "videoId",
+                "youtubeId",
+                "youtube_id"
+            ])
+        ).toLowerCase();
+
+    if(raw.includes("/shorts/")){
+
+        return true;
+
+    }
+
+
+    /*
+       TITLE
+    */
+
+    const title =
+        getTitle(item).toLowerCase();
+
     if(
-        url.includes("/shorts/")
+        title.includes("#shorts") ||
+        title.includes("#short")
     ){
 
         return true;
@@ -1055,129 +1054,24 @@ function explicitShort(item){
 
 
     /*
-    ---------------------------------------------------------
-    5. TITLE
-    ---------------------------------------------------------
-    */
-
-    const title =
-        getTitle(item).toLowerCase();
-
-
-    const shortTitlePatterns = [
-
-        "#shorts",
-        "#short",
-        "shorts",
-        "ytshorts",
-        "youtube shorts",
-        "viral shorts",
-        "short video",
-        "short video",
-        "reel",
-        "reels",
-        "#reels",
-        "status",
-        "15sec",
-        "30sec",
-        "60sec",
-        "15 sec",
-        "30 sec",
-        "60 sec"
-
-    ];
-
-
-    for(const pattern of shortTitlePatterns){
-
-        if(title.includes(pattern)){
-            return true;
-        }
-
-    }
-
-
-    /*
-    ---------------------------------------------------------
-    6. DESCRIPTION
-    ---------------------------------------------------------
+       DESCRIPTION
     */
 
     const description =
-        getDescription(item).toLowerCase();
+        text(
+            getValue(item,[
+                "description",
+                "desc",
+                "caption"
+            ])
+        ).toLowerCase();
 
+    if(
+        description.includes("#shorts") ||
+        description.includes("#short")
+    ){
 
-    const shortDescriptionPatterns = [
-
-        "#shorts",
-        "#short",
-        "youtube shorts",
-        "viral shorts",
-        "viralshorts",
-        "ytshorts",
-        "spiritualshorts",
-        "hindushort",
-        "hindushorts",
-        "short video",
-        "shorts video",
-        "trending shorts",
-        "motivational shorts",
-        "short format",
-        "#reels",
-        "reelsindia",
-        "travelreels",
-        "viralreels",
-        "15sec",
-        "30sec",
-        "60sec",
-        "15 sec",
-        "30 sec",
-        "60 sec",
-        "15 second",
-        "30 second",
-        "60 second"
-
-    ];
-
-
-    for(const pattern of shortDescriptionPatterns){
-
-        if(description.includes(pattern)){
-            return true;
-        }
-
-    }
-
-
-    /*
-    ---------------------------------------------------------
-    7. TAGS
-    ---------------------------------------------------------
-    */
-
-    const tags =
-        getValue(item,[
-            "tags",
-            "keywords"
-        ]);
-
-
-    if(Array.isArray(tags)){
-
-        const tagText =
-            tags
-            .join(" ")
-            .toLowerCase();
-
-        if(
-            tagText.includes("shorts") ||
-            tagText.includes("ytshorts") ||
-            tagText.includes("reels")
-        ){
-
-            return true;
-
-        }
+        return true;
 
     }
 
@@ -1188,7 +1082,7 @@ function explicitShort(item){
 
 
 /* =========================================================
-   NORMAL VIDEO CHECK
+   EXPLICIT NORMAL CHECK
 ========================================================= */
 
 function explicitNormal(item){
@@ -1236,16 +1130,30 @@ function getDurationSeconds(item){
             "durationSeconds",
             "duration_seconds",
             "length",
-            "seconds"
+            "seconds",
+            "durationInSeconds",
+            "duration_seconds_total"
         ]);
+
 
     if(value === ""){
         return 0;
     }
 
 
+    /*
+       Number
+
+       Example:
+       75
+       89
+       120
+    */
+
     if(typeof value === "number"){
+
         return value;
+
     }
 
 
@@ -1254,56 +1162,15 @@ function getDurationSeconds(item){
 
 
     /*
-       ISO 8601:
-       PT15S
-       PT1M20S
-       PT10M30S
-    */
-
-    if(str.startsWith("PT")){
-
-        let total = 0;
-
-        const hours =
-            str.match(/(\d+)H/);
-
-        const minutes =
-            str.match(/(\d+)M/);
-
-        const seconds =
-            str.match(/(\d+)S/);
-
-        if(hours){
-            total +=
-                parseInt(hours[1]) * 3600;
-        }
-
-        if(minutes){
-            total +=
-                parseInt(minutes[1]) * 60;
-        }
-
-        if(seconds){
-            total +=
-                parseInt(seconds[1]);
-        }
-
-        return total;
-
-    }
-
-
-    /*
-       Normal:
-       00:14
-       01:20
-       01:02:30
+       HH:MM:SS
+       MM:SS
     */
 
     if(str.includes(":")){
 
         const parts =
             str.split(":").map(Number);
+
 
         if(parts.every(n => !isNaN(n))){
 
@@ -1315,6 +1182,7 @@ function getDurationSeconds(item){
                 );
 
             }
+
 
             if(parts.length === 3){
 
@@ -1331,6 +1199,10 @@ function getDurationSeconds(item){
     }
 
 
+    /*
+       Plain numeric string
+    */
+
     const number =
         parseFloat(str);
 
@@ -1342,57 +1214,119 @@ function getDurationSeconds(item){
 
 
 /* =========================================================
-   FINAL CLASSIFICATION
+   VERTICAL THUMBNAIL CHECK
 ========================================================= */
 
-function isShort(item){
+function imageIsVertical(url){
+
+    return new Promise(resolve => {
+
+        if(!url){
+
+            resolve(false);
+            return;
+
+        }
+
+
+        const img =
+            new Image();
+
+        let finished = false;
+
+
+        const done =
+            result => {
+
+                if(finished){
+                    return;
+                }
+
+                finished = true;
+                resolve(result);
+
+            };
+
+
+        img.onload = function(){
+
+            if(
+                this.naturalWidth &&
+                this.naturalHeight
+            ){
+
+                done(
+                    this.naturalHeight >
+                    this.naturalWidth * 1.15
+                );
+
+            }else{
+
+                done(false);
+
+            }
+
+        };
+
+
+        img.onerror = function(){
+
+            done(false);
+
+        };
+
+
+        setTimeout(
+            () => done(false),
+            5000
+        );
+
+
+        img.src = url;
+
+    });
+
+}
+
+
+/* =========================================================
+   FINAL SHORT CLASSIFICATION
+========================================================= */
+
+async function isShort(item){
 
     /*
-       SHORT = YES
-       if any strong Short signal exists.
+       CONDITION 1
+       --------------------------------
+       Explicit Short metadata
     */
 
     if(explicitShort(item)){
+
         return true;
+
     }
 
 
     /*
-       If API/source explicitly says normal video,
-       keep it normal.
-    */
+       CONDITION 2
+       --------------------------------
+       Duration LESS THAN 90 seconds
 
-    if(explicitNormal(item)){
-        return false;
-    }
+       89 sec  = Short
+       60 sec  = Short
+       30 sec  = Short
 
-
-    /*
-       Duration only used as a secondary signal.
-       Do NOT automatically call every <3 min video
-       a Short because normal videos can also be short.
+       90 sec  = Normal
+       91 sec  = Normal
     */
 
     const duration =
         getDurationSeconds(item);
 
-    const title =
-        getTitle(item).toLowerCase();
-
-    const description =
-        getDescription(item).toLowerCase();
-
-
     if(
         duration > 0 &&
-        duration <= 180 &&
-        (
-            title.includes("short") ||
-            title.includes("reel") ||
-            title.includes("status") ||
-            description.includes("shorts") ||
-            description.includes("reels")
-        )
+        duration < SHORT_MAX_SECONDS
     ){
 
         return true;
@@ -1400,7 +1334,103 @@ function isShort(item){
     }
 
 
+    /*
+       CONDITION 3
+       --------------------------------
+       YouTube Shorts URL
+    */
+
+    const url =
+        getUrl(item).toLowerCase();
+
+    if(url.includes("/shorts/")){
+
+        return true;
+
+    }
+
+
+    /*
+       CONDITION 4
+       --------------------------------
+       Vertical thumbnail
+    */
+
+    const thumbnail =
+        thumbnailFor(item);
+
+    const vertical =
+        await imageIsVertical(thumbnail);
+
+    if(vertical){
+
+        return true;
+
+    }
+
+
+    /*
+       CONDITION 5
+       --------------------------------
+       Explicit normal video
+
+       IMPORTANT:
+       This comes AFTER the 90-sec rule.
+       So a video marked "video" but having
+       duration 89 sec will still be Short.
+    */
+
+    if(explicitNormal(item)){
+
+        return false;
+
+    }
+
+
+    /*
+       CONDITION 6
+       --------------------------------
+       Everything else = Normal Video
+    */
+
     return false;
+
+}
+
+
+/* =========================================================
+   CLASSIFY ALL ITEMS
+========================================================= */
+
+async function classifyItems(items){
+
+    const videos = [];
+    const shorts = [];
+
+
+    for(const item of items){
+
+        const short =
+            await isShort(item);
+
+
+        if(short){
+
+            shorts.push(item);
+
+        }else{
+
+            videos.push(item);
+
+        }
+
+    }
+
+
+    return {
+        videos,
+        shorts
+    };
 
 }
 
@@ -1416,10 +1446,20 @@ function normalizeData(data){
     }
 
 
+    /*
+       DIRECT ARRAY
+    */
+
     if(Array.isArray(data)){
+
         return data;
+
     }
 
+
+    /*
+       SEPARATE VIDEOS + SHORTS
+    */
 
     const combined = [];
 
@@ -1440,10 +1480,6 @@ function normalizeData(data){
     ];
 
 
-    /*
-       NORMAL VIDEO DATA
-    */
-
     for(const key of videoKeys){
 
         if(Array.isArray(data[key])){
@@ -1456,13 +1492,6 @@ function normalizeData(data){
 
     }
 
-
-    /*
-       SHORT DATA
-
-       Force every item from a dedicated
-       Shorts array to be a Short.
-    */
 
     for(const key of shortKeys){
 
@@ -1485,24 +1514,40 @@ function normalizeData(data){
 
 
     if(combined.length){
+
         return combined;
+
     }
 
 
+    /*
+       OTHER COMMON STRUCTURES
+    */
+
     if(Array.isArray(data.items)){
+
         return data.items;
+
     }
 
 
     if(Array.isArray(data.results)){
+
         return data.results;
+
     }
 
 
     if(Array.isArray(data.data)){
+
         return data.data;
+
     }
 
+
+    /*
+       NESTED DATA
+    */
 
     if(
         data.data &&
@@ -1541,7 +1586,9 @@ async function loadYouTubeData(){
 
 
             if(!response.ok){
+
                 continue;
+
             }
 
 
@@ -1561,6 +1608,7 @@ async function loadYouTubeData(){
                     items.length
                 );
 
+
                 return items;
 
             }
@@ -1577,6 +1625,7 @@ async function loadYouTubeData(){
 
     }
 
+
     return [];
 
 }
@@ -1591,6 +1640,7 @@ function uniqueItems(items){
     const seen =
         new Set();
 
+
     return items.filter(item => {
 
         const id =
@@ -1602,18 +1652,26 @@ function uniqueItems(items){
         const title =
             getTitle(item);
 
+
         const key =
             id ||
             url ||
             title;
 
+
         if(!key){
+
             return true;
+
         }
 
+
         if(seen.has(key)){
+
             return false;
+
         }
+
 
         seen.add(key);
 
@@ -1792,9 +1850,8 @@ function createShortCard(item){
 
 function renderVideos(items){
 
-    const videos =
+    let videos =
         uniqueItems(items)
-        .filter(item => !isShort(item))
         .sort(sortNewest)
         .slice(0,MAX_VIDEOS);
 
@@ -1826,9 +1883,8 @@ function renderVideos(items){
 
 function renderShorts(items){
 
-    const shorts =
+    let shorts =
         uniqueItems(items)
-        .filter(item => isShort(item))
         .sort(sortNewest)
         .slice(0,MAX_SHORTS);
 
@@ -1856,12 +1912,13 @@ function renderShorts(items){
 
 /* =========================================================
    PLAYER
-   SAME PLAYER
+   DO NOT CHANGE
 ========================================================= */
 
 function openPlayer(id,title,isShortVideo){
 
     id = text(id);
+
 
     if(!id){
         return;
@@ -1905,6 +1962,7 @@ function openPlayer(id,title,isShortVideo){
 
     playerOverlay.classList.add("active");
 
+
     document.body.style.overflow =
         "hidden";
 
@@ -1931,6 +1989,7 @@ function openPlayerFromEncoded(encoded){
             data.short === true
         );
 
+
     }catch(error){
 
         console.log(
@@ -1953,7 +2012,9 @@ function closeVideoPlayer(){
         "active"
     );
 
+
     playerFrame.innerHTML = "";
+
 
     document.body.style.overflow = "";
 
@@ -2015,58 +2076,57 @@ async function startWebsite(){
             </div>
         `;
 
+
         shortsContainer.innerHTML = `
             <div class="empty">
                 Shorts data load नहीं हो पाया।
             </div>
         `;
 
+
         return;
 
     }
 
 
-    console.log(
-        "ALL YOUTUBE ITEMS:",
-        items
-    );
+    /*
+       CLASSIFY FIRST
 
+       Iske baad hi videos aur shorts
+       alag sections mein jayenge.
+    */
 
-    const normalVideos =
-        items
-        .filter(item => !isShort(item));
-
-
-    const shorts =
-        items
-        .filter(item => isShort(item));
+    const classified =
+        await classifyItems(items);
 
 
     console.log(
-        "FINAL NORMAL VIDEOS:",
-        normalVideos
+        "NORMAL VIDEOS:",
+        classified.videos
     );
 
 
     console.log(
-        "FINAL SHORTS:",
-        shorts
+        "SHORTS:",
+        classified.shorts
     );
 
 
     renderVideos(
-        normalVideos
+        classified.videos
     );
 
 
     renderShorts(
-        shorts
+        classified.shorts
     );
 
 }
 
 
-/* RUN */
+/* =========================================================
+   RUN
+========================================================= */
 
 startWebsite();
 
