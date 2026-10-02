@@ -1177,44 +1177,453 @@ function closeTemple(){
 function outsideClose(event,id){
 
   if(event.target.id === id){
+<script>
 
-    if(id === "videoModal"){
-      closeVideo();
+/* =========================================
+   HELPERS
+========================================= */
+
+function esc(value){
+  return String(value ?? '').replace(
+    /[&<>"']/g,
+    function(match){
+      return {
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#039;'
+      }[match];
+    }
+  );
+}
+
+
+/* =========================================
+   DATE FORMAT
+========================================= */
+
+function formatDate(value){
+
+  if(!value) return '';
+
+  const date = new Date(value);
+
+  if(Number.isNaN(date.getTime())){
+    return String(value);
+  }
+
+  return date.toLocaleDateString('en-IN',{
+    day:'2-digit',
+    month:'short',
+    year:'numeric'
+  });
+}
+
+
+/* =========================================
+   SORT NEWEST FIRST
+========================================= */
+
+function sortNewest(items){
+
+  return items
+    .slice()
+    .sort(function(a,b){
+
+      const dateA = new Date(
+        a.published ||
+        a.publishedAt ||
+        a.date ||
+        0
+      ).getTime();
+
+      const dateB = new Date(
+        b.published ||
+        b.publishedAt ||
+        b.date ||
+        0
+      ).getTime();
+
+      return dateB - dateA;
+    });
+}
+
+
+/* =========================================
+   LOAD YOUTUBE CONTENT
+========================================= */
+
+async function loadContent(){
+
+  const videoEmpty =
+    document.getElementById('videoEmpty');
+
+  const shortEmpty =
+    document.getElementById('shortEmpty');
+
+  const videoGrid =
+    document.getElementById('videoGrid');
+
+  const shortGrid =
+    document.getElementById('shortGrid');
+
+  try{
+
+    const response =
+      await fetch(
+        './data/videos.json?ts=' + Date.now(),
+        {
+          cache:'no-store'
+        }
+      );
+
+    if(!response.ok){
+      throw new Error(
+        'videos.json not found: ' +
+        response.status
+      );
     }
 
-    if(id === "shortModal"){
-      closeShort();
-    }
+    const data =
+      await response.json();
 
-    if(id === "templeModal"){
-      closeTemple();
-    }
+    let videos =
+      Array.isArray(data.videos)
+      ? data.videos
+      : [];
+
+    let shorts =
+      Array.isArray(data.shorts)
+      ? data.shorts
+      : [];
+
+
+    /* NEWEST FIRST */
+
+    videos = sortNewest(videos);
+    shorts = sortNewest(shorts);
+
+
+    /* ONLY LATEST */
+
+    videos = videos.slice(0,6);
+    shorts = shorts.slice(0,8);
+
+
+    /* =====================================
+       VIDEOS
+    ===================================== */
+
+    videoGrid.innerHTML =
+      videos.map(function(video){
+
+        const id =
+          video.id ||
+          video.videoId ||
+          '';
+
+        const title =
+          video.title ||
+          'Templewale Video';
+
+        const date =
+          formatDate(
+            video.published ||
+            video.publishedAt ||
+            video.date ||
+            ''
+          );
+
+        const thumbnail =
+          video.thumbnail ||
+          (
+            id
+            ? 'https://i.ytimg.com/vi/' +
+              encodeURIComponent(id) +
+              '/hqdefault.jpg'
+            : ''
+          );
+
+        return `
+          <article
+            class="card"
+            onclick="openVideo(
+              '${esc(id)}',
+              '${esc(title)}',
+              '${esc(date)}'
+            )">
+
+            <img
+              class="thumb"
+              loading="lazy"
+              src="${esc(thumbnail)}"
+              alt="${esc(title)}">
+
+            <div class="cardbody">
+
+              <h3>
+                ${esc(title)}
+              </h3>
+
+              <div class="meta">
+                ${esc(date)}
+              </div>
+
+              <span class="watch">
+                Watch video →
+              </span>
+
+            </div>
+
+          </article>
+        `;
+
+      }).join('');
+
+
+    /* =====================================
+       SHORTS
+    ===================================== */
+
+    shortGrid.innerHTML =
+      shorts.map(function(short){
+
+        const id =
+          short.id ||
+          short.videoId ||
+          '';
+
+        const title =
+          short.title ||
+          'Templewale Short';
+
+        const date =
+          formatDate(
+            short.published ||
+            short.publishedAt ||
+            short.date ||
+            ''
+          );
+
+        const thumbnail =
+          short.thumbnail ||
+          (
+            id
+            ? 'https://i.ytimg.com/vi/' +
+              encodeURIComponent(id) +
+              '/hqdefault.jpg'
+            : ''
+          );
+
+        return `
+          <article
+            class="card short"
+            onclick="openShort(
+              '${esc(id)}',
+              '${esc(title)}',
+              '${esc(date)}'
+            )">
+
+            <img
+              class="thumb"
+              loading="lazy"
+              src="${esc(thumbnail)}"
+              alt="${esc(title)}">
+
+            <div class="cardbody">
+
+              <span class="badge">
+                SHORT
+              </span>
+
+              <h3>
+                ${esc(title)}
+              </h3>
+
+              <div class="meta">
+                ${esc(date)}
+              </div>
+
+            </div>
+
+          </article>
+        `;
+
+      }).join('');
+
+
+    videoEmpty.style.display =
+      videos.length ? 'none' : 'block';
+
+    shortEmpty.style.display =
+      shorts.length ? 'none' : 'block';
+
+
+  }catch(error){
+
+    console.error(
+      'Templewale content error:',
+      error
+    );
+
+    videoGrid.innerHTML = '';
+    shortGrid.innerHTML = '';
+
+    videoEmpty.style.display = 'block';
+    shortEmpty.style.display = 'block';
+
+    videoEmpty.textContent =
+      'YouTube videos load नहीं हो पाए. कृपया थोड़ी देर बाद refresh करें.';
+
+    shortEmpty.textContent =
+      'YouTube Shorts load नहीं हो पाए. कृपया थोड़ी देर बाद refresh करें.';
 
   }
 
 }
 
 
-/* ==========================================
-   ESC KEY
-========================================== */
+/* =========================================
+   VIDEO MODAL
+========================================= */
 
-document.addEventListener("keydown",function(event){
+function openVideo(id,title,date){
 
-  if(event.key === "Escape"){
+  if(!id) return;
 
-    closeVideo();
-    closeShort();
-    closeTemple();
+  document.getElementById('videoFrame').src =
+    'https://www.youtube.com/embed/' +
+    encodeURIComponent(id) +
+    '?autoplay=1&rel=0';
+
+  document.getElementById('modalVideoTitle').textContent =
+    title;
+
+  document.getElementById('modalVideoDate').textContent =
+    date;
+
+  document.getElementById('videoModal').classList.add('show');
+
+  document.body.style.overflow = 'hidden';
+}
+
+
+/* =========================================
+   SHORT MODAL
+========================================= */
+
+function openShort(id,title,date){
+
+  if(!id) return;
+
+  document.getElementById('shortFrame').src =
+    'https://www.youtube.com/embed/' +
+    encodeURIComponent(id) +
+    '?autoplay=1&rel=0';
+
+  document.getElementById('modalShortTitle').textContent =
+    title;
+
+  document.getElementById('modalShortDate').textContent =
+    date;
+
+  document.getElementById('shortModal').classList.add('show');
+
+  document.body.style.overflow = 'hidden';
+}
+
+
+/* =========================================
+   TEMPLE MODAL
+========================================= */
+
+function openTemple(name,location){
+
+  document.getElementById('modalTempleName').textContent =
+    name;
+
+  document.getElementById('modalTempleLocation').textContent =
+    location;
+
+  document.getElementById('templeModal').classList.add('show');
+
+  document.body.style.overflow = 'hidden';
+}
+
+
+/* =========================================
+   CLOSE MODALS
+========================================= */
+
+function closeVideoModal(){
+
+  document.getElementById('videoFrame').src = '';
+
+  document.getElementById('videoModal').classList.remove('show');
+
+  document.body.style.overflow = '';
+}
+
+
+function closeShortModal(){
+
+  document.getElementById('shortFrame').src = '';
+
+  document.getElementById('shortModal').classList.remove('show');
+
+  document.body.style.overflow = '';
+}
+
+
+function closeTempleModal(){
+
+  document.getElementById('templeModal').classList.remove('show');
+
+  document.body.style.overflow = '';
+}
+
+
+/* =========================================
+   CLOSE OUTSIDE MODAL
+========================================= */
+
+function closeModal(event){
+
+  if(event.target.classList.contains('modal')){
+
+    closeVideoModal();
+    closeShortModal();
+    closeTempleModal();
 
   }
 
-});
+}
 
 
-/* ==========================================
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener(
+  'keydown',
+  function(event){
+
+    if(event.key === 'Escape'){
+
+      closeVideoModal();
+      closeShortModal();
+      closeTempleModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================
    START
-========================================== */
+========================================= */
 
 loadContent();
 
