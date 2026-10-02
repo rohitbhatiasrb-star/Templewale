@@ -28,7 +28,7 @@ jobs:
           from datetime import datetime, timezone
 
           API_KEY = os.environ["API_KEY"]
-          HANDLE = "@templewale1"
+          HANDLE = "@templewale"
 
           def get(url, params):
               query = urllib.parse.urlencode(params)
